@@ -21,6 +21,7 @@
             app:layout_constraintVertical_bias="1.0"
             tools:srcCompat="@color/rosaditoPalo" />
 
+        <!-- Campo cedula -->
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
@@ -33,9 +34,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.059" />
+            app:layout_constraintVertical_bias="0.023" />
 
-        <!-- Campo cedula -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayoutCedula"
             android:layout_marginTop="20dp"
@@ -124,10 +124,10 @@
             app:layout_constraintTop_toBottomOf="@+id/textInputLayoutDireccion">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txttelf"
+                android:id="@+id/txtContrasena"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Teléfono"
+                android:hint="Contraseña"
                 android:textStyle="bold"
                 android:textSize="17sp"/>
         </com.google.android.material.textfield.TextInputLayout>

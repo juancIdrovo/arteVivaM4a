@@ -28,7 +28,7 @@ public class RegistroEstudiante extends AppCompatActivity {
         Cedula = findViewById(R.id.txtcedula);
         Correo = findViewById(R.id.txtcorreo);
         Direccion = findViewById(R.id.txtdireccion);
-        Telefono = findViewById(R.id.txttelf);
+        Telefono = findViewById(R.id.txtContrasena);
 
         GuardarBtn.setOnClickListener(new View.OnClickListener() {
             @Override
