@@ -10,6 +10,15 @@ private String cedula_estudiante_fk;
     private String correo;
     private String direccion;
     private String telf;
+private String contrasenia;
+
+    public String getContrasenia() {
+        return contrasenia;
+    }
+
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
+    }
 
     public String getCedula() {
         return cedula;
