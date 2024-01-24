@@ -40,7 +40,7 @@ public class RegistroEstudiante extends AppCompatActivity {
                 registerRequest.setCorreo(Correo.getText().toString());
                 registerRequest.setDireccion(Direccion.getText().toString());
                 registerRequest.setContrasenia(Telefono.getText().toString());
-                registerRequest.setCed_estudiante_fk(Cedula.getText().toString());
+                registerRequest.setCedula_estudiante_fk(Cedula.getText().toString());
                 registeruser(registerRequest);
             }
         });

@@ -3,7 +3,7 @@ package ec.tecazuay.artevivam4a;
 public class RegisterResponse {
 
     private String cedula;
-    private String ced_estudiante_fk;
+    private String cedula_estudiante_fk;
     private String correo;
     private String contrasenia;
 
@@ -31,11 +31,11 @@ public class RegisterResponse {
         this.contrasenia = contrasenia;
     }
 
-    public String getCed_estudiante_fk() {
-        return ced_estudiante_fk;
+    public String getCedula_estudiante_fk() {
+        return cedula_estudiante_fk;
     }
 
-    public void setCed_estudiante_fk(String ced_estudiante_fk) {
-        this.ced_estudiante_fk = ced_estudiante_fk;
+    public void setCedula_estudiante_fk(String cedula_estudiante_fk) {
+        this.cedula_estudiante_fk = cedula_estudiante_fk;
     }
 }

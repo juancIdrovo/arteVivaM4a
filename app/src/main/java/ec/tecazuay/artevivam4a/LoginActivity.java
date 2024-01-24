@@ -48,7 +48,8 @@ public class LoginActivity extends AppCompatActivity {
                     ;
                 } else {
                     LoginRequest loginRequest = new LoginRequest();
-                    loginRequest.setCorreo(txtEmail.getText().toString());
+                    loginRequest.setCedula(txtEmail.getText().toString());
+                    loginRequest.setCedula_estudiante_fk(txtEmail.getText().toString());
                     loginRequest.setContrasenia(txtPass.getText().toString());
                     loginUser(loginRequest);
                 }
@@ -56,16 +57,13 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
     public void loginUser(LoginRequest loginRequest){
-        LoginRequest lore = new LoginRequest();
-        lore.setCorreo(txtEmail.getText().toString());
-        lore.setContrasenia(txtPass.getText().toString());
-        Call<LoginResponse> loginResponseCall = ApiClient.getService().loginUser(lore);
+        Call<LoginResponse> loginResponseCall = ApiClient.getService().loginUser(loginRequest ) ;
         loginResponseCall.enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 if (response.isSuccessful()){
                     LoginResponse loginResponse = response.body();
-                    startActivity(new Intent(LoginActivity.this,RegistroEstudiante.class).putExtra("data",loginResponse));
+                    startActivity(new Intent(LoginActivity.this,PerfilUsuarioActivity.class).putExtra("data",loginResponse));
                     finish();
                     Toast.makeText(LoginActivity.this, "Login Correcto", Toast.LENGTH_LONG).show();
                 }else{
