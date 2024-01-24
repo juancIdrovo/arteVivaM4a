@@ -45,6 +45,7 @@ public class RegistroEstudiante extends AppCompatActivity {
             }
         });
     }
+
     public void registeruser(RegisterRequest registerRequest){
 
         Call<RegisterResponse> registerResponseCall = ApiClient.getService().registerUsers(registerRequest);

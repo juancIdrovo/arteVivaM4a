@@ -19,7 +19,7 @@
         tools:targetApi="34">
         <activity
 
-            android:name=".MainActivity"
+            android:name=".LoginActivity"
             android:exported="true"/>
         <activity
 

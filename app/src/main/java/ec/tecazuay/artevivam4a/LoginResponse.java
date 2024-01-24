@@ -1,6 +1,8 @@
 package ec.tecazuay.artevivam4a;
 
-public class LoginResponse {
+import java.io.Serializable;
+
+public class LoginResponse implements Serializable {
 
     private String cedula;
     private String nombres;
