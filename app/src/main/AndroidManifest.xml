@@ -17,20 +17,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ArteVivaM4a"
         tools:targetApi="34">
-        <activity
 
-            android:name=".LoginActivity"
+        <activity android:name=".LoginActivity"
             android:exported="true"/>
-        <activity
 
-            android:name=".RegistroEstudiante"
+        <activity android:name=".RegistroEstudiante"
             android:exported="true">
+            <!-- This is the correct placement for the intent-filter -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>
