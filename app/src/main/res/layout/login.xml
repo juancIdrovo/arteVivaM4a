@@ -7,23 +7,15 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageViewBackground"
-        android:layout_width="506dp"
-        android:layout_height="351dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/color" />
-
-    <ImageView
         android:id="@+id/imageViewLogo"
-        android:layout_width="245dp"
-        android:layout_height="187dp"
+        android:layout_width="346dp"
+        android:layout_height="311dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.183"
+        app:layout_constraintVertical_bias="0.038"
         tools:srcCompat="@drawable/logosinfondo" />
 
     <TextView
@@ -56,22 +48,25 @@
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/inputEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="385dp"
+        android:layout_height="74dp"
         android:layout_marginTop="25dp"
         android:hint="Correo Electrónico"
+        android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewLogin" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/inputPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="17dp"
+        android:layout_width="385dp"
+        android:layout_height="74dp"
+        android:layout_marginTop="8dp"
         android:hint="Contraseña"
+        android:inputType="textPassword"
         android:tooltipText="Ingresa tu cédula"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.615"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inputEmail" />
 
