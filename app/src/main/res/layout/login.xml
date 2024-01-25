@@ -97,6 +97,7 @@
         android:layout_marginEnd="47dp"
         android:text="Iniciar Sesión"
         android:textSize="18sp"
+        android:onClick="Login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
