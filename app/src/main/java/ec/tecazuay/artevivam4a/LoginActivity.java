@@ -28,7 +28,7 @@ import java.util.Map;
 public class LoginActivity extends AppCompatActivity {
     Button btnAceptar, btnRegistarse;
     EditText txtEmail, txtPass;
-    String correo,pass;
+    String cedula,pass;
     String url = "http://192.168.1.10/Android_PHP/login.php";
 
     @Override
@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
             progressDialog.show();
 
             progressDialog.show();
-            correo = txtEmail.getText().toString().trim();
+            cedula = txtEmail.getText().toString().trim();
             pass = txtPass.getText().toString().trim();
 
             StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -70,14 +70,19 @@ public class LoginActivity extends AppCompatActivity {
                 public void onResponse(String response) {
                     progressDialog.dismiss();
                     if (response.equalsIgnoreCase("ingresaste correctamente")) {
+                        String cedula = txtEmail.getText().toString();
+                        Intent intent = new Intent(LoginActivity.this, PerfilUsuarioActivityKTL.class);
+                        intent.putExtra("cedula", cedula);
                         txtEmail.setText("");
                         txtPass.setText("");
-                        startActivity(new Intent(getApplicationContext(), PerfilUsuarioActivity.class));
+                        startActivity(intent);
+
                         Toast.makeText(LoginActivity.this, response, Toast.LENGTH_LONG).show();
                     } else {
                         Toast.makeText(LoginActivity.this, response, Toast.LENGTH_LONG).show();
                     }
                 }
+
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
@@ -87,7 +92,7 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError{
                     Map<String,String> params = new HashMap<String, String>();
-                    params.put("correo",correo);
+                    params.put("cedula",cedula);
                     params.put("contrasena",pass);
                     return params;
                 }
@@ -96,4 +101,5 @@ public class LoginActivity extends AppCompatActivity {
             requestQueue.add(request);
         }
     }
+
 }

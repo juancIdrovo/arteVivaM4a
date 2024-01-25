@@ -24,7 +24,7 @@
         <activity android:name=".modificarEstudiante"
             android:exported="true"/>
 
-        <activity android:name=".PerfilUsuarioActivity"
+        <activity android:name=".PerfilUsuarioActivityKTL"
             android:exported="true"/>
 
         <activity android:name=".SolicitudMatricula"
