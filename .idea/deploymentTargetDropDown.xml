@@ -2,6 +2,9 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
+      <entry key="RegistroEstudiante">
+        <State />
+      </entry>
       <entry key="SolicitudMatricula">
         <State />
       </entry>

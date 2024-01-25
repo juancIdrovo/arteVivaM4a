@@ -14,7 +14,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RegistroEstudiante extends AppCompatActivity {
-    Button GuardarBtn;
+    Button GuardarBtn, CancelarBtn;
     EditText Nombre, Apellido, Cedula, Correo, Direccion, Telefono;
 
 
@@ -23,6 +23,7 @@ public class RegistroEstudiante extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registro_estudiant);
         GuardarBtn = findViewById(R.id.btnGuardar);
+        CancelarBtn = findViewById(R.id.btnCancelar);
         Nombre = findViewById(R.id.txtnombres);
         Apellido = findViewById(R.id.txtapellidos);
         Cedula = findViewById(R.id.txtcedula);
@@ -42,6 +43,14 @@ public class RegistroEstudiante extends AppCompatActivity {
                 registerRequest.setContrasenia(Telefono.getText().toString());
                 registerRequest.setCedula_estudiante_fk(Cedula.getText().toString());
                 registeruser(registerRequest);
+            }
+        });
+
+        CancelarBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Volver a la pantalla de perfil_usuario
+                startActivity(new Intent(RegistroEstudiante.this, PerfilUsuarioActivity.class));
             }
         });
     }
