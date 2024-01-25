@@ -50,7 +50,7 @@ public class RegistroEstudiante extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Volver a la pantalla de perfil_usuario
-                startActivity(new Intent(RegistroEstudiante.this, PerfilUsuarioActivity.class));
+                startActivity(new Intent(RegistroEstudiante.this, LoginActivity.class));
             }
         });
     }
