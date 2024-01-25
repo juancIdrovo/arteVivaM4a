@@ -5,19 +5,7 @@
       <entry key="LoginActivity">
         <State />
       </entry>
-      <entry key="RegistroEstudiante">
-        <State />
-      </entry>
-      <entry key="SolicitudMatricula">
-        <State />
-      </entry>
-      <entry key="SolicitudRetiro">
-        <State />
-      </entry>
       <entry key="app">
-        <State />
-      </entry>
-      <entry key="modificarEstudiante">
         <State />
       </entry>
     </value>
