@@ -14,26 +14,15 @@
         android:layout_marginStart="66dp"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="67dp"
+        android:layout_marginBottom="58dp"
         android:text="Solicitud de Matricula"
         android:textColor="@color/maradito"
         android:textSize="28sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerAsignatura"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Spinner
-        android:id="@+id/spinnerCategoria"
-        android:layout_width="370dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="69dp"
-        android:background="@drawable/rounded_text_field"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerAsignatura" />
 
     <Spinner
         android:id="@+id/spinnerAsignatura"
@@ -42,19 +31,47 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="58dp"
         android:layout_marginEnd="21dp"
+        android:layout_marginBottom="69dp"
+        android:background="@drawable/rounded_text_field"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/spinnerCategoria"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="92dp"
+        android:text="Docente: "
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCategoria" />
+
+    <Spinner
+        android:id="@+id/spinnerCategoria"
+        android:layout_width="370dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="60dp"
         android:background="@drawable/rounded_text_field"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintTop_toBottomOf="@+id/spinnerAsignatura" />
 
     <TextView
         android:id="@+id/txtMostrarDocente"
         android:layout_width="261dp"
         android:layout_height="58dp"
         android:layout_marginStart="27dp"
-        android:layout_marginTop="69dp"
+        android:layout_marginTop="68dp"
         android:layout_marginEnd="25dp"
         android:background="@drawable/rounded_text_field"
         android:text=""
@@ -64,18 +81,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerCategoria" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="88dp"
-        android:text="Docente: "
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerCategoria" />
 
     <TextView
@@ -110,6 +115,7 @@
         android:id="@+id/btnSolicitar"
         android:layout_width="172dp"
         android:layout_height="82dp"
+        android:layout_marginTop="34dp"
         android:layout_marginBottom="36dp"
         android:text="Solicitar Matrícula"
         android:textSize="17sp"
@@ -117,13 +123,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.087"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtDoncente" />
 
     <Button
         android:id="@+id/btnCancelar"
         android:layout_width="172dp"
         android:layout_height="82dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="34dp"
         android:layout_marginBottom="36dp"
         android:text="Cancelar Solicitud"
         android:textSize="17sp"
@@ -131,6 +139,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.466"
-        app:layout_constraintStart_toEndOf="@+id/btnSolicitar" />
+        app:layout_constraintStart_toEndOf="@+id/btnSolicitar"
+        app:layout_constraintTop_toBottomOf="@+id/txtDoncente" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

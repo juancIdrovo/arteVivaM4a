@@ -1,7 +1,6 @@
 package ec.tecazuay.artevivam4a;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -17,7 +16,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
-    Button btnregistrar, lblregistrar;
+    Button btnIniciaSesion, btnRegistrar, btnGuardarRegistro;
     EditText usuario, clave;
 
     @Override
@@ -25,19 +24,24 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
-        btnregistrar = findViewById(R.id.btnLogIn);
-        lblregistrar = findViewById(R.id.btnRegistro);
+        //////////Login
+        btnIniciaSesion = findViewById(R.id.btnLogIn);
+        btnRegistrar = findViewById(R.id.btnRegistro);
         usuario = findViewById(R.id.inputEmail);
         clave = findViewById(R.id.inputPassword);
 
-        lblregistrar.setOnClickListener(new View.OnClickListener() {
+        /////registro
+        //btnGuardarRegistro = findViewById(R.id.btnGuardar);
+
+
+        btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(LoginActivity.this, RegistroEstudiante.class));
             }
         });
 
-        btnregistrar.setOnClickListener(new View.OnClickListener() {
+        btnIniciaSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (TextUtils.isEmpty(usuario.getText().toString()) || TextUtils.isEmpty(clave.getText().toString())) {

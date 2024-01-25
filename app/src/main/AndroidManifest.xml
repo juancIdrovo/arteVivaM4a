@@ -23,7 +23,6 @@
 
         <activity android:name=".RegistroEstudiante"
             android:exported="true">
-            <!-- This is the correct placement for the intent-filter -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -36,6 +35,12 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <!-- Agrega la declaración para la actividad SolicitudRetiro -->
+        <activity android:name=".SolicitudRetiro"
+            android:exported="true">
+            <!-- Puedes agregar filtros de intención aquí según sea necesario -->
         </activity>
 
     </application>

@@ -49,7 +49,7 @@
         app:layout_constraintTop_toBottomOf="@+id/spinnerNotas" />
 
     <Button
-        android:id="@+id/btnLogIn"
+        android:id="@+id/btnAceptar"
         android:layout_width="318dp"
         android:layout_height="56dp"
         android:layout_marginStart="43dp"

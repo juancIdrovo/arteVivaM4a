@@ -68,7 +68,7 @@
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/btnSchedule2"
+        android:id="@+id/btnDocentes"
         android:layout_width="265dp"
         android:layout_height="54dp"
         android:layout_below="@id/btnSchedule1"
