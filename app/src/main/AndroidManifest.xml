@@ -27,6 +27,21 @@
         <activity android:name=".PerfilUsuarioActivity"
             android:exported="true"/>
 
+        <activity android:name=".SolicitudMatricula"
+            android:exported="true"/>
+
+        <activity android:name=".Notas"
+            android:exported="true"/>
+
+        <activity android:name=".Horarios"
+            android:exported="true"/>
+
+        <activity android:name=".Cursos"
+            android:exported="true"/>
+
+        <activity android:name=".Docentes"
+            android:exported="true"/>
+
         <activity android:name=".RegistroEstudiante"
             android:exported="true">
             <intent-filter>
