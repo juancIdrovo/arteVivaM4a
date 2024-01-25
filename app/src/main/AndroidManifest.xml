@@ -27,6 +27,9 @@
         <activity android:name=".PerfilUsuarioActivity"
             android:exported="true"/>
 
+        <activity android:name=".SolicitudMatricula"
+            android:exported="true"/>
+
         <activity android:name=".RegistroEstudiante"
             android:exported="true">
             <intent-filter>
