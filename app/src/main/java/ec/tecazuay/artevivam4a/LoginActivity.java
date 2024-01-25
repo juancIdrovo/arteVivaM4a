@@ -24,12 +24,9 @@ import com.android.volley.toolbox.Volley;
 import java.util.HashMap;
 import java.util.Map;
 
-import retrofit2.Call;
-import retrofit2.Callback;
 
 public class LoginActivity extends AppCompatActivity {
     Button btnAceptar, btnRegistarse;
-    TextView txtRecuperar;
     EditText txtEmail, txtPass;
     String correo,pass;
     String url = "http://192.168.1.10/Android_PHP/login.php";
@@ -47,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
         btnRegistarse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LoginActivity.this, RegistroEstudiante.class));
+                startActivity(new Intent(LoginActivity.this, RegisterActivityKTL.class));
             }
         });
 

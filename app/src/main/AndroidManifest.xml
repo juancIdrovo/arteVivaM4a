@@ -42,7 +42,7 @@
         <activity android:name=".Docentes"
             android:exported="true"/>
 
-        <activity android:name=".RegistroEstudiante"
+        <activity android:name=".RegisterActivityKTL"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
