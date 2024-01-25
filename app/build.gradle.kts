@@ -40,6 +40,7 @@ dependencies {
     implementation ("de.hdodenhof:circleimageview:3.1.0")
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.5.0")
+   // implementation files ("libs/mysql-connector-java-8.3.0.jar")
     implementation("com.google.firebase:protolite-well-known-types:18.0.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

@@ -26,7 +26,7 @@
         android:layout_marginTop="32dp"
         android:text="Arte Viva te da la bienvenida"
         android:textAlignment="center"
-        android:textColor="#FDFAFC"
+        android:textColor="@color/maradito"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
