@@ -48,6 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Cédula"
+                android:textColor="@color/black"
                 android:textStyle="bold"
                 android:textSize="17sp"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -64,6 +65,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nombres"
+                android:textColor="@color/black"
                 android:textStyle="bold"
                 android:textSize="17sp"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -80,6 +82,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Apellidos"
+                android:textColor="@color/black"
                 android:textStyle="bold"
                 android:textSize="17sp"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -96,6 +99,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Correo"
+                android:textColor="@color/black"
                 android:textStyle="bold"
                 android:textSize="17sp"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -112,6 +116,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Dirección"
+                android:textColor="@color/black"
                 android:textStyle="bold"
                 android:textSize="17sp"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -128,6 +133,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Contraseña"
+                android:textColor="@color/black"
+                android:inputType="textPassword"
                 android:textStyle="bold"
                 android:textSize="17sp"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -143,6 +150,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Teléfono"
+                android:textColor="@color/black"
                 android:textStyle="bold"
                 android:textSize="17sp"/>
         </com.google.android.material.textfield.TextInputLayout>

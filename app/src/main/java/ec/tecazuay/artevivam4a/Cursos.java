@@ -14,16 +14,15 @@ public class Cursos extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.notas_de_asignatura);
+        setContentView(R.layout.asignaturas);
 
-        btnCancelar = findViewById(R.id.btnCancelar);
-        btnGuardar = findViewById(R.id.btnGuardar);
+        btnCancelar = findViewById(R.id.btnAceptar);
 
         btnCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                //startActivity(new Intent(Docentes.this, PerfilUsuarioActivity.class));
+                startActivity(new Intent(Cursos.this, PerfilUsuarioActivity.class));
 
             }
         });

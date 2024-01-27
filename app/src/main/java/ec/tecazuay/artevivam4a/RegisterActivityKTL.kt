@@ -19,7 +19,7 @@ class RegisterActivityKTL : AppCompatActivity() {
     var txtDireccion:EditText?=null
     var txtTelefono:EditText?=null
     var txtContrasena:EditText?=null
-
+    var txtContrasena:EditText?=null
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.registro_estudiant)
@@ -33,7 +33,7 @@ class RegisterActivityKTL : AppCompatActivity() {
 
     }
     fun clickbtnGuardar(view: View){
-        val url="http://192.168.1.10/Android_PHP/insertar.php"
+        val url="http://192.168.137.1/Android_PHP/insertar.php"
         val queue=Volley.newRequestQueue(this)
         var resultadoPost = object : StringRequest(Request.Method.POST,url,
             Response.Listener<String> { response ->

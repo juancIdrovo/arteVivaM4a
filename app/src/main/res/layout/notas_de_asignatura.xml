@@ -57,6 +57,7 @@
         android:layout_marginTop="50dp"
         android:background="@drawable/rounded_text_field"
         android:text=""
+        android:textColor="@color/black"
         android:textAlignment="gravity"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -73,6 +74,7 @@
         android:text="@string/calificaci_n_final"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.181"
         app:layout_constraintStart_toStartOf="parent"
@@ -117,6 +119,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.597"
         app:layout_constraintStart_toEndOf="@+id/btnGuardar" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

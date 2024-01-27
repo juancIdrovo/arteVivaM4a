@@ -26,7 +26,7 @@ class PerfilUsuarioActivityKTL : AppCompatActivity() {
         val cedula=intent.getStringExtra("cedula").toString()
         val queue=Volley.newRequestQueue(this)
 
-        val url="http://192.168.1.10/Android_PHP/registro.php?cedula=$cedula"
+        val url="http://192.168.137.1/Android_PHP/registro.php?cedula=$cedula"
         val jsonObjectRequest = JsonObjectRequest(
             Request.Method.GET,url,null,
             { response ->

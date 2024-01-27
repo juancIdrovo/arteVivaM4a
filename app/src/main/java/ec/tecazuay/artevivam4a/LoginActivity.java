@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     Button btnAceptar, btnRegistarse;
     EditText txtEmail, txtPass;
     String cedula,pass;
-    String url = "http://192.168.1.10/Android_PHP/login.php";
+    String url = "http://192.168.137.1/Android_PHP/login.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +70,6 @@ public class LoginActivity extends AppCompatActivity {
                 public void onResponse(String response) {
                     progressDialog.dismiss();
                     if (response.equalsIgnoreCase("ingresaste correctamente")) {
-                        String cedula = txtEmail.getText().toString();
                         Intent intent = new Intent(LoginActivity.this, PerfilUsuarioActivityKTL.class);
                         intent.putExtra("cedula", cedula);
                         txtEmail.setText("");
