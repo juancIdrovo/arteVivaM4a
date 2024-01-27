@@ -19,7 +19,7 @@ class RegisterActivityKTL : AppCompatActivity() {
     var txtDireccion:EditText?=null
     var txtTelefono:EditText?=null
     var txtContrasena:EditText?=null
-    var txtContrasena:EditText?=null
+
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.registro_estudiant)
@@ -62,6 +62,4 @@ class RegisterActivityKTL : AppCompatActivity() {
         queue.add(resultadoPost)
 
     }
-
-
 }

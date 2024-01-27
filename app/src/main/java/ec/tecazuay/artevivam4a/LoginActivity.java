@@ -3,12 +3,10 @@ package ec.tecazuay.artevivam4a;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,8 +16,12 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,8 +30,8 @@ import java.util.Map;
 public class LoginActivity extends AppCompatActivity {
     Button btnAceptar, btnRegistarse;
     EditText txtEmail, txtPass;
-    String cedula,pass;
-    String url = "http://192.168.137.1/Android_PHP/login.php";
+    String mail, pass;
+    String url = "http://192.168.18.17:8080/api/login"; // Nueva URL del endpoint de login
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,58 +49,67 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(new Intent(LoginActivity.this, RegisterActivityKTL.class));
             }
         });
-
     }
 
-    public void Login(View view){
-        if (txtEmail.getText().toString().equals("")){
-            Toast.makeText(this,"Ingrese la cedula", Toast.LENGTH_LONG).show();
-        }else if(txtPass.getText().toString().equals("")){
-            Toast.makeText(this,"Ingrese la contraseña", Toast.LENGTH_LONG).show();
-
-        }else {
+    public void Login(View view) {
+        if (txtEmail.getText().toString().equals("")) {
+            Toast.makeText(this, "Ingrese la cédula", Toast.LENGTH_LONG).show();
+        } else if (txtPass.getText().toString().equals("")) {
+            Toast.makeText(this, "Ingrese la contraseña", Toast.LENGTH_LONG).show();
+        } else {
             ProgressDialog progressDialog = new ProgressDialog(this);
             progressDialog.setMessage("Espere un momento...");
             progressDialog.show();
 
-            progressDialog.show();
-            cedula = txtEmail.getText().toString().trim();
+            mail = txtEmail.getText().toString().trim();
             pass = txtPass.getText().toString().trim();
 
-            StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-                    progressDialog.dismiss();
-                    if (response.equalsIgnoreCase("ingresaste correctamente")) {
-                        Intent intent = new Intent(LoginActivity.this, PerfilUsuarioActivityKTL.class);
-                        intent.putExtra("cedula", cedula);
-                        txtEmail.setText("");
-                        txtPass.setText("");
-                        startActivity(intent);
+            JSONObject jsonBody = new JSONObject();
+            try {
+                jsonBody.put("correo", mail);
+                jsonBody.put("contrasena", pass);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
-                        Toast.makeText(LoginActivity.this, response, Toast.LENGTH_LONG).show();
-                    } else {
-                        Toast.makeText(LoginActivity.this, response, Toast.LENGTH_LONG).show();
-                    }
-                }
+            JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, jsonBody,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            progressDialog.dismiss();
+                            Log.d("LoginActivity", "Respuesta del servidor: " + response.toString());
 
-            }, new Response.ErrorListener() {
+                            try {
+                                String status = response.optString("status", "");
+
+                                // Cambios en la condición para considerar cualquier respuesta que no sea "error" como éxito
+                                if (!status.equals("error")) {
+                                    Log.d("LoginActivity", "Inicio de sesión exitoso para el correo: " + mail);
+                                    Intent intent = new Intent(LoginActivity.this, PerfilUsuarioActivityKTL.class);
+                                    intent.putExtra("cedula", mail);
+                                    txtEmail.setText("");
+                                    txtPass.setText("");
+                                    startActivity(intent);
+                                } else {
+                                    Log.d("LoginActivity", "Autenticación fallida para el correo: " + mail);
+                                    Toast.makeText(LoginActivity.this, "Autenticación fallida", Toast.LENGTH_LONG).show();
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(LoginActivity.this, error.getMessage().toString(), Toast.LENGTH_LONG).show();
+                    progressDialog.dismiss();
+                    Log.e("LoginActivity", "Error en la solicitud: " + error.getMessage());
+                    Toast.makeText(LoginActivity.this, "Error en la solicitud: " + error.getMessage(), Toast.LENGTH_LONG).show();
                 }
-            }){
-                @Override
-                protected Map<String, String> getParams() throws AuthFailureError{
-                    Map<String,String> params = new HashMap<String, String>();
-                    params.put("cedula",cedula);
-                    params.put("contrasena",pass);
-                    return params;
-                }
-            } ;
+            });
+
             RequestQueue requestQueue = Volley.newRequestQueue(LoginActivity.this);
             requestQueue.add(request);
         }
     }
-
 }
+

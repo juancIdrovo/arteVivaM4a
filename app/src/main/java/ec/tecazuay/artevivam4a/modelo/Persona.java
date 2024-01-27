@@ -18,7 +18,7 @@ public class Persona {
 
     private String foto;
     private Date fecha_nac;
-    private String contrasenia;
+    private String contrasena;
 
 
     public Persona(String cedula, String nombres, String apellidos, String correo, String direccion, String telf, String foto, Date fecha_nac, String contrasenia) {
@@ -30,7 +30,7 @@ public class Persona {
         this.telf = telf;
         this.foto = foto;
         this.fecha_nac = fecha_nac;
-        this.contrasenia = contrasenia;
+        this.contrasena = contrasenia;
     }
 
     public Persona() {
@@ -106,10 +106,10 @@ public class Persona {
     }
 
     public String getContrasenia() {
-        return contrasenia;
+        return contrasena;
     }
 
     public void setContrasenia(String contrasenia) {
-        this.contrasenia = contrasenia;
+        this.contrasena = contrasenia;
     }
 }
