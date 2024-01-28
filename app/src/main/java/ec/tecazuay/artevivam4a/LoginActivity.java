@@ -46,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
         btnRegistarse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LoginActivity.this, RegisterActivityKTL.class));
+                startActivity(new Intent(LoginActivity.this, RegistroEstudiante.class));
             }
         });
     }

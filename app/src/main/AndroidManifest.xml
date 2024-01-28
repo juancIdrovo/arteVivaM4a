@@ -45,7 +45,7 @@
             android:name=".Docentes"
             android:exported="true" />
         <activity
-            android:name=".RegisterActivityKTL"
+            android:name=".RegistroEstudiante"
             android:exported="true" />
         <activity
             android:name=".LoginActivity"

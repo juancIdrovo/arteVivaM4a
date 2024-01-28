@@ -11,7 +11,7 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 
-class RegisterActivityKTL : AppCompatActivity() {
+class RegisterActivityKTL : AppCompatActivity() {/*
     var txtNombre:EditText?=null
     var txtApellido:EditText?=null
     var txtCedula:EditText?=null
@@ -61,5 +61,5 @@ class RegisterActivityKTL : AppCompatActivity() {
         }
         queue.add(resultadoPost)
 
-    }
+    }*/
 }
