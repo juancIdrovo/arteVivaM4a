@@ -19,7 +19,7 @@
         tools:targetApi="34">
         <activity
             android:name=".Docente"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".modificarEstudiante"
             android:exported="true" />
@@ -41,9 +41,7 @@
         <activity
             android:name=".Cursos"
             android:exported="true" />
-        <activity
-            android:name=".Docentes"
-            android:exported="true" />
+
         <activity
             android:name=".RegistroEstudiante"
             android:exported="true" />

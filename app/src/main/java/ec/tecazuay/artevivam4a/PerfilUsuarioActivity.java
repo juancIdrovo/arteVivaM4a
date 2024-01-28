@@ -45,7 +45,7 @@ public class PerfilUsuarioActivity  extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                startActivity(new Intent(PerfilUsuarioActivity.this, Docentes.class));
+                startActivity(new Intent(PerfilUsuarioActivity.this, Docente.class));
 
             }
         });
