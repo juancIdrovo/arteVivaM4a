@@ -1,6 +1,7 @@
 package ec.tecazuay.artevivam4a;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -29,6 +30,8 @@ public class RegistroEstudiante extends AppCompatActivity {
     private RequestQueue requestQueue;
     private static final int REQUEST_IMAGE_PICK = 1;
     private ImageView imageView;
+    private Uri imageUri; // Declarar como miembro de la clase
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,10 +58,15 @@ public class RegistroEstudiante extends AppCompatActivity {
 
         if (requestCode == REQUEST_IMAGE_PICK && resultCode == RESULT_OK) {
             // Get the selected image Uri
-            Uri imageUri = data.getData();
+            imageUri = data.getData();
 
-            // Set the image to the ImageView
-            imageView.setImageURI(imageUri);
+            if (imageUri != null) {
+                // Set the image to the ImageView
+                imageView.setImageURI(imageUri);
+            } else {
+                // Handle the case when no image is selected
+                Toast.makeText(this, "No se ha seleccionado ninguna imagen.", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
@@ -85,6 +93,13 @@ public class RegistroEstudiante extends AppCompatActivity {
             jsonBody.put("telf", telf);
             jsonBody.put("contrasena", contrasena);
             jsonBody.put("cedula_estudiante_fk", cedula);
+            if (imageUri != null) {
+                String rutaImagen = obtenerRutaDesdeUri(imageUri);
+                jsonBody.put("foto", rutaImagen);
+            } else {
+                // Handle the case when imageUri is null
+                Log.e("RegistroEstudiante", "imageUri es null en clickbtnGuardar");
+            }
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -113,6 +128,20 @@ public class RegistroEstudiante extends AppCompatActivity {
 
         // Agrega la solicitud a la cola de solicitudes
         requestQueue.add(request);
+    }
+    private String obtenerRutaDesdeUri(Uri imageUri) {
+        if (imageUri == null) {
+            // Manejar el caso cuando imageUri es null
+            Log.e("RegistroEstudiante", "imageUri es null en obtenerRutaDesdeUri");
+            return null;  // O devuelve una cadena vacía o realiza alguna acción específica
+        }
+        String[] projection = {MediaStore.Images.Media.DATA};
+        Cursor cursor = getContentResolver().query(imageUri, projection, null, null, null);
+        int columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        String ruta = cursor.getString(columnIndex);
+        cursor.close();
+        return ruta;
     }
 }
 
