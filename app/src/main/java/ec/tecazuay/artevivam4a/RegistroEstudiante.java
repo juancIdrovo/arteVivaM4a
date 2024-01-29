@@ -1,9 +1,13 @@
 package ec.tecazuay.artevivam4a;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,8 +25,10 @@ import org.json.JSONObject;
 
 public class RegistroEstudiante extends AppCompatActivity {
 
-    private String urlRegistro = "http://192.168.18.17:8080/api/estudiantes";
+    private String urlRegistro = "http://192.168.1.18:8080/api/estudiantes";
     private RequestQueue requestQueue;
+    private static final int REQUEST_IMAGE_PICK = 1;
+    private ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +37,31 @@ public class RegistroEstudiante extends AppCompatActivity {
 
         // Inicializa la RequestQueue
         requestQueue = Volley.newRequestQueue(this);
+        imageView = findViewById(R.id.imageView);
+        Button btnSeleccionarFoto = findViewById(R.id.btnSeleccionarFoto);
+        btnSeleccionarFoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Launch the image picker
+                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(intent, REQUEST_IMAGE_PICK);
+            }
+        });
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == REQUEST_IMAGE_PICK && resultCode == RESULT_OK) {
+            // Get the selected image Uri
+            Uri imageUri = data.getData();
+
+            // Set the image to the ImageView
+            imageView.setImageURI(imageUri);
+        }
+    }
+
 
     public void clickbtnGuardar(View view) {
         // Obtén los valores de los campos
