@@ -36,7 +36,7 @@ import java.util.Locale;
 
 public class RegistroEstudiante extends AppCompatActivity {
 
-    private String urlRegistro = "http://192.168.1.18:8080/api/estudiantes";
+    private String urlRegistro = "http://192.168.137.252:8080/api/estudiantes";
     private RequestQueue requestQueue;
     private static final int REQUEST_IMAGE_PICK = 1;
     private ImageView imageView;
@@ -115,7 +115,7 @@ public class RegistroEstudiante extends AppCompatActivity {
 
         if (!fechaString.isEmpty()) {
             try {
-                SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
                 fecha = sdf.parse(fechaString);
             } catch (ParseException e) {
                 e.printStackTrace();
@@ -124,15 +124,7 @@ public class RegistroEstudiante extends AppCompatActivity {
         }
 
         JSONObject jsonBody = new JSONObject();
-        if (fecha != null) {
-            try {
-                jsonBody.put("fecha_nac", fecha);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        } else {
-            Log.e("RegistroEstudiante", "La fecha es null, no se añadió al JSONObject");
-        }
+
         try {
             jsonBody.put("cedula", cedula);
             jsonBody.put("nombres", nombres);
@@ -142,7 +134,14 @@ public class RegistroEstudiante extends AppCompatActivity {
             jsonBody.put("telf", telf);
             jsonBody.put("contrasena", contrasena);
             jsonBody.put("cedula_estudiante_fk", cedula);
-            jsonBody.put("fecha_nac", fecha);
+
+            if (fecha != null) {
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+                String fechaFormateada = sdf.format(fecha);
+                jsonBody.put("fecha_nac", fechaFormateada);
+            } else {
+                Log.e("RegistroEstudiante", "La fecha es null, no se añadió al JSONObject");
+            }
 
             if (imageUri != null) {
                 String rutaImagen = obtenerRutaDesdeUri(imageUri);
@@ -155,7 +154,9 @@ public class RegistroEstudiante extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, urlRegistro, jsonBody,
+
+
+    JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, urlRegistro, jsonBody,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
