@@ -1,6 +1,6 @@
 package ec.tecazuay.artevivam4a.modelo;
 
-public class Horarios {
+public class Horarioss {
     private Long codigoHorarios;
     private String hora_Inicio;
     private String hora_fin;

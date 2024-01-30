@@ -27,6 +27,7 @@ public class PerfilUsuarioActivity  extends AppCompatActivity {
     private String userName;
     private String userEmail;
     private Uri imageUri;
+    private String cedula;
     Button btnNotas, btnHorario, btnDocente, btnmodificar, btnCurso;
     ImageView opt;
     @Override
@@ -35,6 +36,7 @@ public class PerfilUsuarioActivity  extends AppCompatActivity {
         setContentView(R.layout.perfil_usuairo);
 
         userName = getIntent().getStringExtra("user_name");
+        cedula = getIntent().getStringExtra("cedula");
         userEmail = getIntent().getStringExtra("user_email");
         imageUri = Uri.parse(getIntent().getStringExtra("image_uri"));
 
@@ -65,7 +67,7 @@ public class PerfilUsuarioActivity  extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                startActivity(new Intent(PerfilUsuarioActivity.this, Horarios.class));
+                startActivity(new Intent(PerfilUsuarioActivity.this, Horarios.class).putExtra("cedula",cedula));
 
             }
         });
@@ -83,7 +85,7 @@ public class PerfilUsuarioActivity  extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                startActivity(new Intent(PerfilUsuarioActivity.this, Cursos.class));
+                startActivity(new Intent(PerfilUsuarioActivity.this, Cursos.class).putExtra("user_email",userEmail));
 
             }
         });
