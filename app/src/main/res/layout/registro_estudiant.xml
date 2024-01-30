@@ -25,7 +25,7 @@
             tools:srcCompat="@color/rosaditoPalo" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imageViewfoto"
             android:layout_width="138dp"
             android:layout_height="124dp"
             android:layout_marginTop="92dp"

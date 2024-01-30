@@ -1,20 +1,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/rosaditoPalo">
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/fotoPerfil"
-        android:layout_width="236dp"
-        android:layout_height="237dp"
-
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:src="@drawable/luffiperfil"
-        app:civ_border_color="#FA04E5"
-        app:civ_border_width="3dp" />
 
     <EditText
         android:id="@+id/tvName"
@@ -104,4 +93,22 @@
         android:layout_marginEnd="19dp"
         android:contentDescription="Botón de opciones"
         android:src="@drawable/trespuntosopt34" />
+
+    <ImageView
+        android:id="@+id/imageViewfoto"
+        android:layout_width="138dp"
+        android:layout_height="124dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="92dp"
+        android:layout_marginEnd="145dp"
+        android:layout_marginBottom="63dp"
+        android:background="#5E5858"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.868"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </RelativeLayout>

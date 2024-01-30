@@ -30,8 +30,9 @@ import java.util.Map;
 public class LoginActivity extends AppCompatActivity {
     Button btnAceptar, btnRegistarse;
     EditText txtEmail, txtPass;
+
     String mail, pass;
-    String url = "http://192.168.137.252:8080/api/login"; // Nueva URL del endpoint de login
+    String url = "http://192.168.1.34:8080/api/loginEstudiante"; // Nueva URL del endpoint de login
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,13 +83,21 @@ public class LoginActivity extends AppCompatActivity {
                             try {
                                 String status = response.optString("status", "");
 
-                                // Cambios en la condición para considerar cualquier respuesta que no sea "error" como éxito
                                 if (!status.equals("error")) {
                                     Log.d("LoginActivity", "Inicio de sesión exitoso para el correo: " + mail);
-                                    Intent intent = new Intent(LoginActivity.this, PerfilUsuarioActivityKTL.class);
-                                    intent.putExtra("cedula", mail);
-                                    txtEmail.setText("");
-                                    txtPass.setText("");
+
+                                    // Extract user's name and email from the response
+                                    String nombre = response.optString("nombres", "");
+                                    String correo = response.optString("correo", "");
+                                    String foto = response.optString("foto", "");
+
+                                    // Pass the user's name, email, and image URL as extras
+                                    Intent intent = new Intent(LoginActivity.this, PerfilUsuarioActivity.class);
+                                    intent.putExtra("user_name", nombre);
+                                    intent.putExtra("user_email", correo);
+                                    intent.putExtra("foto", foto);
+                                    Log.d("LoginActivity", "Respuesta del servidor: " + response.toString());
+
                                     startActivity(intent);
                                 } else {
                                     Log.d("LoginActivity", "Autenticación fallida para el correo: " + mail);
