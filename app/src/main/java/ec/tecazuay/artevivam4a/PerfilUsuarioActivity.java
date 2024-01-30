@@ -44,7 +44,6 @@ public class PerfilUsuarioActivity  extends AppCompatActivity {
         btnDocente = findViewById(R.id.btnDocentes);
         btnCurso = findViewById(R.id.btnCourses);
         opt = findViewById(R.id.btnOptions);
-        btnmodificar = findViewById(R.id.buttonaa);
         updateUI();
         opt = findViewById(R.id.btnOptions);
         opt.setOnClickListener(new View.OnClickListener() {
@@ -70,12 +69,6 @@ public class PerfilUsuarioActivity  extends AppCompatActivity {
 
             }
         });
-        btnmodificar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(PerfilUsuarioActivity.this, modificarEstudiante.class));
-            }
-        });
 
         btnDocente.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,10 +92,10 @@ public class PerfilUsuarioActivity  extends AppCompatActivity {
     private void showPopupMenu(View view) {
         // Inflate the popup menu layout
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-        View popupView = inflater.inflate(R.layout.perfil_usuairo, null);
+        View popupView = inflater.inflate(R.layout.activity_menu_desplegaable, null);
 
         // Create the PopupWindow
-        PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
         popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         popupWindow.setOutsideTouchable(true);
 
@@ -128,10 +121,21 @@ public class PerfilUsuarioActivity  extends AppCompatActivity {
                 popupWindow.dismiss();
             }
         });
+        modifyProfileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                        startActivity(new Intent(PerfilUsuarioActivity.this, modificarEstudiante.class));
+
+                }
+
+        });
 
         // Show the popup menu
         popupWindow.showAsDropDown(view);
     }
+
     private void updateUI() {
         TextView tvName = findViewById(R.id.tvName);
         TextView tvMail = findViewById(R.id.tvMail);

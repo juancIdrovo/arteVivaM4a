@@ -5,41 +5,6 @@
     android:layout_height="match_parent"
     android:background="@color/rosaditoPalo">
 
-    <EditText
-        android:id="@+id/tvName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/fotoPerfil"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="Monkey D Luffy"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/modify_profile_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Modificar perfil" />
-
-    <Button
-        android:id="@+id/sign_out_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Cerrar sesión" />
-
-
-    <EditText
-        android:id="@+id/tvMail"
-        android:layout_width="184dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tvName"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:text="luffy@gmail.com"
-        android:textColor="#000000"
-        android:textSize="20sp" />
 
     <Button
         android:id="@+id/btnSchedule1"
@@ -61,6 +26,7 @@
         android:layout_height="56dp"
         android:layout_below="@id/tvMail"
         android:layout_alignParentStart="true"
+        android:layout_centerInParent="true"
         android:layout_marginStart="71dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/rounded_button"
@@ -109,28 +75,49 @@
 
     <ImageView
         android:id="@+id/imageViewfoto"
-        android:layout_width="138dp"
-        android:layout_height="124dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="128dp"
-        android:layout_marginTop="92dp"
-        android:layout_marginEnd="145dp"
-        android:layout_marginBottom="63dp"
+        android:layout_width="204dp"
+        android:layout_height="151dp"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentTop="false"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentBottom="false"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="39dp"
+        android:layout_marginEnd="130dp"
+        android:layout_marginBottom="534dp"
         android:background="#5E5858"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.868"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="@id/tvName" />
 
-    <Button
-        android:id="@+id/buttonaa"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="251dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@id/imageViewfoto"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="220dp"
-        android:text="Button" />
+        android:layout_marginStart="82dp"
+        android:layout_marginTop="250dp"
+        android:foregroundTint="#000000"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="30dp" />
+
+    <TextView
+        android:id="@+id/tvMail"
+        android:layout_width="311dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvName"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="35dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="20dp" />
 
 </RelativeLayout>
