@@ -36,7 +36,7 @@ import java.util.Locale;
 
 public class RegistroEstudiante extends AppCompatActivity {
 
-    private String urlRegistro = "http://192.168.137.252:8080/api/estudiantes";
+    private String urlRegistro = "http://192.168.1.21:8080/api/estudiantes";
     private RequestQueue requestQueue;
     private static final int REQUEST_IMAGE_PICK = 1;
     private ImageView imageView;
@@ -51,6 +51,7 @@ public class RegistroEstudiante extends AppCompatActivity {
 
         requestQueue = Volley.newRequestQueue(this);
         imageView = findViewById(R.id.imageViewfoto);
+
         Button btnSeleccionarFoto = findViewById(R.id.btnSeleccionarFoto);
 
         btnSeleccionarFoto.setOnClickListener(new View.OnClickListener() {
@@ -95,14 +96,14 @@ public class RegistroEstudiante extends AppCompatActivity {
             imageUri = data.getData();
 
             if (imageUri != null) {
+
                 imageView.setImageURI(imageUri);
             } else {
                 Toast.makeText(this, "No se ha seleccionado ninguna imagen.", Toast.LENGTH_SHORT).show();
             }
         }
     }
-
-    public void clickbtnGuardar(View view) {
+        public void clickbtnGuardar(View view) {
         String cedula = ((TextInputEditText) findViewById(R.id.txtcedula)).getText().toString().trim();
         String nombres = ((TextInputEditText) findViewById(R.id.txtnombres)).getText().toString().trim();
         String apellidos = ((TextInputEditText) findViewById(R.id.txtapellidos)).getText().toString().trim();
@@ -149,7 +150,6 @@ public class RegistroEstudiante extends AppCompatActivity {
             } else {
                 Log.e("RegistroEstudiante", "imageUri es null en clickbtnGuardar");
             }
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
