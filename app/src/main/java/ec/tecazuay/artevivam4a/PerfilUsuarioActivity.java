@@ -4,8 +4,10 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,9 +16,15 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.Target;
 
 import java.io.File;
 
@@ -29,6 +37,7 @@ public class PerfilUsuarioActivity  extends AppCompatActivity {
     private Uri imageUri;
     Button btnNotas, btnHorario, btnDocente, btnmodificar, btnCurso;
     ImageView opt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,6 +98,7 @@ public class PerfilUsuarioActivity  extends AppCompatActivity {
         });
 
     }
+
     private void showPopupMenu(View view) {
         // Inflate the popup menu layout
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
@@ -126,9 +136,9 @@ public class PerfilUsuarioActivity  extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                        startActivity(new Intent(PerfilUsuarioActivity.this, modificarEstudiante.class));
+                startActivity(new Intent(PerfilUsuarioActivity.this, modificarEstudiante.class));
 
-                }
+            }
 
         });
 
@@ -146,13 +156,32 @@ public class PerfilUsuarioActivity  extends AppCompatActivity {
 
         // Verifica que la URL de la imagen no sea nula
         if (imageUri != null) {
-            // Intenta cargar la imagen con Picasso
-            Picasso.get().load(imageUri).into(ivUserImage);
+            // Intenta cargar la imagen con Glide
+            Glide.with(this)
+                    .load(imageUri)
+                    .apply(new RequestOptions()
+                            .placeholder(R.drawable.logosinfondo)  // Imagen de marcador de posición mientras carga
+                            .error(R.drawable.luffiperfil)        // Imagen de marcador de posición en caso de error
+                    )
+                    .listener(new RequestListener<Drawable>() {
+                        @Override
+                        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                            // Manejar fallo de carga de imagen aquí
+                            Log.e("PerfilUsuarioActivity", "Error al cargar la imagen con Glide: " + e.getMessage());
+                            return false;
+                        }
+
+                        @Override
+                        public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                            // La imagen se cargó correctamente
+                            return false;
+                        }
+                    })
+                    .into(ivUserImage);
         } else {
             // URL de la imagen nula o vacía, usa una imagen de marcador de posición
             ivUserImage.setImageResource(R.drawable.luffiperfil);
         }
     }
 }
-
 

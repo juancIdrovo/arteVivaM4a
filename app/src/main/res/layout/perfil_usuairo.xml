@@ -6,6 +6,12 @@
     android:background="@color/rosaditoPalo">
 
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/color" />
+
     <Button
         android:id="@+id/btnSchedule1"
         android:layout_width="265dp"
@@ -75,8 +81,8 @@
 
     <ImageView
         android:id="@+id/imageViewfoto"
-        android:layout_width="204dp"
-        android:layout_height="151dp"
+        android:layout_width="233dp"
+        android:layout_height="272dp"
         android:layout_alignParentStart="false"
         android:layout_alignParentTop="false"
         android:layout_alignParentEnd="false"
@@ -99,13 +105,20 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="82dp"
-        android:layout_marginTop="250dp"
+        android:layout_marginStart="81dp"
+        android:layout_marginTop="339dp"
+        android:backgroundTint="#000000"
+        android:backgroundTintMode="add"
+        android:breakStrategy="high_quality"
+        android:capitalize="characters"
         android:foregroundTint="#000000"
         android:text="TextView"
         android:textAlignment="center"
+        android:textAllCaps="false"
         android:textColor="#000000"
-        android:textSize="30dp" />
+        android:textColorHighlight="#C51E1E"
+        android:textSize="30dp"
+        android:textStyle="bold|italic" />
 
     <TextView
         android:id="@+id/tvMail"
@@ -116,8 +129,10 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="48dp"
         android:layout_marginTop="35dp"
+        android:backgroundTint="#F0EBF3"
         android:text="TextView"
         android:textAlignment="center"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:textStyle="italic" />
 
 </RelativeLayout>

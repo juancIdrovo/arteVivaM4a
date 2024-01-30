@@ -36,7 +36,7 @@ import java.util.Locale;
 
 public class RegistroEstudiante extends AppCompatActivity {
 
-    private String urlRegistro = "http://192.168.1.21:8080/api/estudiantes";
+    private String urlRegistro = "http://192.168.137.3:8080/api/estudiantes";
     private RequestQueue requestQueue;
     private static final int REQUEST_IMAGE_PICK = 1;
     private ImageView imageView;
@@ -188,12 +188,22 @@ public class RegistroEstudiante extends AppCompatActivity {
             Log.e("RegistroEstudiante", "imageUri es null en obtenerRutaDesdeUri");
             return null;
         }
+
         String[] projection = {MediaStore.Images.Media.DATA};
-        Cursor cursor = getContentResolver().query(imageUri, projection, null, null, null);
-        int columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-        cursor.moveToFirst();
-        String ruta = cursor.getString(columnIndex);
-        cursor.close();
-        return ruta;
+        Cursor cursor = null;
+        try {
+            cursor = getContentResolver().query(imageUri, projection, null, null, null);
+            if (cursor != null && cursor.moveToFirst()) {
+                int columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+                return cursor.getString(columnIndex);
+            } else {
+                Log.e("RegistroEstudiante", "Cursor nulo o sin datos en obtenerRutaDesdeUri");
+                return null;
+            }
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
     }
 }

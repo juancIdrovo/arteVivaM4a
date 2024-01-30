@@ -29,7 +29,7 @@ public class Cursos extends AppCompatActivity {
     List<String> datos = new ArrayList<String>();
     ListView lst;
     RequestQueue qeqeq;
-    String url = "http://192.168.40.85:8080/api/asignaturas";
+    String url = "http://192.168.137.3:8080/api/asignaturas";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
