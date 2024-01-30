@@ -60,7 +60,7 @@ public class Docente extends AppCompatActivity {
     }
 
     private void MostrarDetallesProfesor(String codigoProfesor) {
-        String urlWithCode = "http://192.168.40.85:8080/api/profesores/" + codigoProfesor;
+        String urlWithCode = "http://192.168.18.17:8080/api/profesores/" + codigoProfesor;
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, urlWithCode, null, new Response.Listener<JSONObject>() {
             @Override

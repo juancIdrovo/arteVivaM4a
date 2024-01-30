@@ -86,7 +86,7 @@ public class modificarEstudiante extends AppCompatActivity {
                 }
 
                 // Enviar solicitud PUT al servidor
-                String url = "http://192.168.40.85:8080/api/estudiantes/" + estudiante.getCedula();
+                String url = "http://192.168.18.17:8080/api/estudiantes/" + estudiante.getCedula();
                 enviarSolicitudPut(url, jsonBody);
             }
         });

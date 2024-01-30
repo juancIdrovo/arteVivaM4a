@@ -163,7 +163,7 @@ public class PerfilUsuarioActivity  extends AppCompatActivity {
                     .load(imageUri)
                     .apply(new RequestOptions()
                             .placeholder(R.drawable.logosinfondo)  // Imagen de marcador de posición mientras carga
-                            .error(R.drawable.luffiperfil)        // Imagen de marcador de posición en caso de error
+                            .error(R.drawable.tati)        // Imagen de marcador de posición en caso de error
                     )
                     .listener(new RequestListener<Drawable>() {
                         @Override
