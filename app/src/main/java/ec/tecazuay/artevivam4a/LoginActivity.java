@@ -90,11 +90,13 @@ public class LoginActivity extends AppCompatActivity {
                                     String nombre = response.optString("nombres", "");
                                     String correo = response.optString("correo", "");
                                     String imageUri = response.optString("foto", "");
+                                    String cedula=response.optString("cedula","");
 
                                     // Pass the user's name, email, and image URL as extras
                                     Intent intent = new Intent(LoginActivity.this, PerfilUsuarioActivity.class);
                                     intent.putExtra("user_name", nombre);
                                     intent.putExtra("user_email", correo);
+                                    intent.putExtra("cedula",cedula);
                                     intent.putExtra("image_uri", imageUri.toString());                                    startActivity(intent);
                                     Log.d("LoginActivity", "Respuesta del servidor: " + response.toString());
 

@@ -37,7 +37,13 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
+    <ListView
+        android:id="@+id/lstAsignaturas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerNotas"/>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewAsignaturas"
         android:layout_width="370dp"

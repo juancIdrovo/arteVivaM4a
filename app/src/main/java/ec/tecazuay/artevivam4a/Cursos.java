@@ -31,14 +31,16 @@ public class Cursos extends AppCompatActivity {
     RequestQueue qeqeq;
     String url = "http://192.168.137.3:8080/api/asignaturas";
 
+    String userEmail;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.asignaturas);
-        lst=(ListView) findViewById(R.id.recyclerViewAsignaturas);
+        lst=(ListView) findViewById(R.id.lstAsignaturas);
         btnCancelar = findViewById(R.id.btnAceptar);
         qeqeq= Volley.newRequestQueue(this);
         GetApiData();
+        userEmail = getIntent().getStringExtra("user_email");
         btnCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
