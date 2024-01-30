@@ -150,7 +150,7 @@ public class PerfilUsuarioActivity  extends AppCompatActivity {
             Picasso.get().load(imageUri).into(ivUserImage);
         } else {
             // URL de la imagen nula o vacía, usa una imagen de marcador de posición
-            ivUserImage.setImageResource(R.drawable.profesora64);
+            ivUserImage.setImageResource(R.drawable.luffiperfil);
         }
     }
 }
