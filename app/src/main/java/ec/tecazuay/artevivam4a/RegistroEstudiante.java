@@ -7,7 +7,6 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -29,8 +28,6 @@ import com.google.android.material.textfield.TextInputEditText;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -39,7 +36,7 @@ import java.util.Locale;
 
 public class RegistroEstudiante extends AppCompatActivity {
 
-    private String urlRegistro = "http://192.168.1.34:8080/api/estudiantes";
+    private String urlRegistro = "http://192.168.1.21:8080/api/estudiantes";
     private RequestQueue requestQueue;
     private static final int REQUEST_IMAGE_PICK = 1;
     private ImageView imageView;
@@ -54,6 +51,7 @@ public class RegistroEstudiante extends AppCompatActivity {
 
         requestQueue = Volley.newRequestQueue(this);
         imageView = findViewById(R.id.imageViewfoto);
+
         Button btnSeleccionarFoto = findViewById(R.id.btnSeleccionarFoto);
 
         btnSeleccionarFoto.setOnClickListener(new View.OnClickListener() {
@@ -98,32 +96,14 @@ public class RegistroEstudiante extends AppCompatActivity {
             imageUri = data.getData();
 
             if (imageUri != null) {
-                try {
-                    // Convertir la imagen a Base64
-                    String base64Image = convertImageToBase64(imageUri);
-                    // Guardar la cadena Base64 en tu JSON u otro lugar según sea necesario
-                    // ...
 
-                    imageView.setImageURI(imageUri);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    Toast.makeText(this, "Error al convertir la imagen a Base64", Toast.LENGTH_SHORT).show();
-                }
+                imageView.setImageURI(imageUri);
             } else {
                 Toast.makeText(this, "No se ha seleccionado ninguna imagen.", Toast.LENGTH_SHORT).show();
             }
         }
     }
-
-    private String convertImageToBase64(Uri imageUri) throws IOException {
-        InputStream inputStream = getContentResolver().openInputStream(imageUri);
-        byte[] bytes = new byte[inputStream.available()];
-        inputStream.read(bytes);
-        inputStream.close();
-
-        return Base64.encodeToString(bytes, Base64.DEFAULT);
-    }
-    public void clickbtnGuardar(View view) {
+        public void clickbtnGuardar(View view) {
         String cedula = ((TextInputEditText) findViewById(R.id.txtcedula)).getText().toString().trim();
         String nombres = ((TextInputEditText) findViewById(R.id.txtnombres)).getText().toString().trim();
         String apellidos = ((TextInputEditText) findViewById(R.id.txtapellidos)).getText().toString().trim();
@@ -170,7 +150,6 @@ public class RegistroEstudiante extends AppCompatActivity {
             } else {
                 Log.e("RegistroEstudiante", "imageUri es null en clickbtnGuardar");
             }
-
         } catch (JSONException e) {
             e.printStackTrace();
         }

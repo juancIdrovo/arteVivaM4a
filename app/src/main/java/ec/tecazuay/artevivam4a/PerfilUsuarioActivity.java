@@ -21,8 +21,8 @@ import ec.tecazuay.artevivam4a.modelo.Estudiante;
 public class PerfilUsuarioActivity  extends AppCompatActivity {
     private String userName;
     private String userEmail;
-    private String userImageUrl;
-    Button btnNotas, btnHorario, btnDocente, btnCurso;
+    private Uri imageUri;
+    Button btnNotas, btnHorario, btnDocente, btnmodificar, btnCurso;
     ImageView opt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,13 +31,15 @@ public class PerfilUsuarioActivity  extends AppCompatActivity {
 
         userName = getIntent().getStringExtra("user_name");
         userEmail = getIntent().getStringExtra("user_email");
-        userImageUrl = getIntent().getStringExtra("foto");
+        imageUri = Uri.parse(getIntent().getStringExtra("image_uri"));
+
 
         btnNotas = findViewById(R.id.btnNotes);
         btnHorario = findViewById(R.id.btnSchedule1);
         btnDocente = findViewById(R.id.btnDocentes);
         btnCurso = findViewById(R.id.btnCourses);
         opt = findViewById(R.id.btnOptions);
+        btnmodificar = findViewById(R.id.buttonaa);
         updateUI();
         btnNotas.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,6 +56,12 @@ public class PerfilUsuarioActivity  extends AppCompatActivity {
 
                 startActivity(new Intent(PerfilUsuarioActivity.this, Horarios.class));
 
+            }
+        });
+        btnmodificar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(PerfilUsuarioActivity.this, modificarEstudiante.class));
             }
         });
 
@@ -86,27 +94,14 @@ public class PerfilUsuarioActivity  extends AppCompatActivity {
         tvMail.setText(userEmail);
 
         // Verifica que la URL de la imagen no sea nula
-        if (userImageUrl != null && !userImageUrl.isEmpty()) {
+        if (imageUri != null) {
             // Intenta cargar la imagen con Picasso
-            try {
-                // Convertir el path local a una URL completa
-                Uri imageUri = Uri.fromFile(new File(userImageUrl));
-                String imageUrl = imageUri.toString();
-
-                // Utilizar Picasso para cargar la imagen en el ImageView
-                Picasso.get().load(imageUrl).into(ivUserImage);
-            } catch (Exception e) {
-                // Manejar cualquier excepción que pueda ocurrir al intentar cargar la imagen
-                e.printStackTrace();
-                // Usa una imagen de marcador de posición si hay un problema con la URL
-                ivUserImage.setImageResource(R.drawable.profesora64);
-            }
+            Picasso.get().load(imageUri).into(ivUserImage);
         } else {
             // URL de la imagen nula o vacía, usa una imagen de marcador de posición
             ivUserImage.setImageResource(R.drawable.profesora64);
         }
     }
-
 }
 
 
