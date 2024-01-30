@@ -2,11 +2,16 @@ package ec.tecazuay.artevivam4a;
 
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -41,6 +46,13 @@ public class PerfilUsuarioActivity  extends AppCompatActivity {
         opt = findViewById(R.id.btnOptions);
         btnmodificar = findViewById(R.id.buttonaa);
         updateUI();
+        opt = findViewById(R.id.btnOptions);
+        opt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopupMenu(v);
+            }
+        });
         btnNotas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -84,7 +96,42 @@ public class PerfilUsuarioActivity  extends AppCompatActivity {
         });
 
     }
+    private void showPopupMenu(View view) {
+        // Inflate the popup menu layout
+        LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+        View popupView = inflater.inflate(R.layout.perfil_usuairo, null);
 
+        // Create the PopupWindow
+        PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        popupWindow.setOutsideTouchable(true);
+
+        // Find the buttons in the popup menu
+        Button modifyProfileButton = popupView.findViewById(R.id.modify_profile_button);
+        Button signOutButton = popupView.findViewById(R.id.sign_out_button);
+
+        // Set click listeners for the buttons
+        modifyProfileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle the "Modificar perfil" button click
+                startActivity(new Intent(PerfilUsuarioActivity.this, modificarEstudiante.class));
+                popupWindow.dismiss();
+            }
+        });
+
+        signOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Handle the "Cerrar sesión" button click
+
+                popupWindow.dismiss();
+            }
+        });
+
+        // Show the popup menu
+        popupWindow.showAsDropDown(view);
+    }
     private void updateUI() {
         TextView tvName = findViewById(R.id.tvName);
         TextView tvMail = findViewById(R.id.tvMail);

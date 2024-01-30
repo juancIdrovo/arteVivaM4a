@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText txtEmail, txtPass;
 
     String mail, pass;
-    String url = "http://192.168.18.17:8080/api/loginEstudiante"; // Nueva URL del endpoint de login
+    String url = "http://192.168.1.21:8080/api/loginEstudiante"; // Nueva URL del endpoint de login
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,13 +89,13 @@ public class LoginActivity extends AppCompatActivity {
                                     // Extract user's name and email from the response
                                     String nombre = response.optString("nombres", "");
                                     String correo = response.optString("correo", "");
-                                    String foto = response.optString("foto", "");
+                                    String imageUri = response.optString("foto", "");
 
                                     // Pass the user's name, email, and image URL as extras
                                     Intent intent = new Intent(LoginActivity.this, PerfilUsuarioActivity.class);
                                     intent.putExtra("user_name", nombre);
                                     intent.putExtra("user_email", correo);
-                                    intent.putExtra("foto", foto);
+                                    intent.putExtra("image_uri", imageUri.toString());                                    startActivity(intent);
                                     Log.d("LoginActivity", "Respuesta del servidor: " + response.toString());
 
                                     startActivity(intent);
