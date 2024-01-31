@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -28,6 +29,8 @@ import com.google.android.material.textfield.TextInputEditText;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -36,7 +39,7 @@ import java.util.Locale;
 
 public class RegistroEstudiante extends AppCompatActivity {
 
-    private String urlRegistro = "http://192.168.18.17:8080/api/estudiantes";
+    private String urlRegistro = "http://192.168.1.21:8080/api/estudiantes";
     private RequestQueue requestQueue;
     private static final int REQUEST_IMAGE_PICK = 1;
     private ImageView imageView;
@@ -145,8 +148,8 @@ public class RegistroEstudiante extends AppCompatActivity {
             }
 
             if (imageUri != null) {
-                String rutaImagen = obtenerRutaDesdeUri(imageUri);
-                jsonBody.put("foto", rutaImagen);
+                String base64Image = convertirImagenBase64(imageUri);
+                jsonBody.put("foto", base64Image);
             } else {
                 Log.e("RegistroEstudiante", "imageUri es null en clickbtnGuardar");
             }
@@ -204,6 +207,19 @@ public class RegistroEstudiante extends AppCompatActivity {
             if (cursor != null) {
                 cursor.close();
             }
+        }
+    }
+    private String convertirImagenBase64(Uri imageUri) {
+        try {
+            InputStream inputStream = getContentResolver().openInputStream(imageUri);
+            byte[] bytes = new byte[inputStream.available()];
+            inputStream.read(bytes);
+            inputStream.close();
+            return "data:image/jpeg;base64," + Base64.encodeToString(bytes, Base64.DEFAULT);
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.e("RegistroEstudiante", "Error al convertir imagen a base64");
+            return null;
         }
     }
 }
