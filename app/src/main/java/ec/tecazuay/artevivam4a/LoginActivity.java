@@ -97,7 +97,7 @@ public class LoginActivity extends AppCompatActivity {
                                     intent.putExtra("user_name", nombre);
                                     intent.putExtra("user_email", correo);
                                     intent.putExtra("cedula",cedula);
-                                    intent.putExtra("image_uri", imageUri.toString());                                    startActivity(intent);
+                                    intent.putExtra("image_uri", imageUri.toString());
                                     Log.d("LoginActivity", "Respuesta del servidor: " + response.toString());
 
                                     startActivity(intent);

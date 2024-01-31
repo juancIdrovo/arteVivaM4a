@@ -31,7 +31,9 @@ import java.util.Locale;
 import ec.tecazuay.artevivam4a.modelo.Estudiante;
 
 public class modificarEstudiante extends AppCompatActivity {
-    EditText txtNombres, txtApellidos, txtCorreo, txtDireccion, txtTelefono, txtFoto, txtFechaNac;
+    EditText txtNombres, txtApellidos, txtCorreo, txtDireccion, txtTelefono,  txtcedula, txtContrasena, txtFecha;
+    Button btnGuarda, btnCancelar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +46,30 @@ public class modificarEstudiante extends AppCompatActivity {
         txtCorreo = findViewById(R.id.txtcorreo);
         txtDireccion = findViewById(R.id.txtdireccion);
         txtTelefono = findViewById(R.id.txttelf);
-        txtFoto = findViewById(R.id.txtfoto);
+        txtcedula = findViewById(R.id.txtcedula);
+        txtFecha = findViewById(R.id.txtFechaNac);
+        btnGuarda = findViewById(R.id.btnGuardar);
+        btnCancelar = findViewById(R.id.btnCancelar);
+        Intent intent = getIntent();
+        if (intent != null) {
+            String nombre = intent.getStringExtra("user_name");
+            String correo = intent.getStringExtra("user_email");
+            String cedula = intent.getStringExtra("cedula");
+            String apellido = intent.getStringExtra("apellido");
+            String direccion = intent.getStringExtra("direccion");
+            String telefono = intent.getStringExtra("telefono");
+            String contrasena = intent.getStringExtra("contrasena");
 
+            // Establecer los valores en los campos de texto
+            txtNombres.setText(nombre);
+            txtCorreo.setText(correo);
+            txtcedula.setText(cedula);
+            txtApellidos.setText(apellido);
+            txtDireccion.setText(direccion);
+            txtTelefono.setText(telefono);
+            txtContrasena.setText(contrasena);
+
+}
         // Obtener datos del estudiante desde la actividad anterior o la API
         Estudiante estudiante = obtenerDatosEstudianteActual();
         mostrarDatosEstudiante(estudiante);
@@ -60,7 +84,7 @@ public class modificarEstudiante extends AppCompatActivity {
                 String nuevoCorreo = txtCorreo.getText().toString();
                 String nuevaDireccion = txtDireccion.getText().toString();
                 String nuevoTelefono = txtTelefono.getText().toString();
-                String nuevaFoto = txtFoto.getText().toString();
+
 
                 // Mostrar los datos que se están enviando antes de la solicitud PUT
                 Log.d("Depuración", "Datos a enviar al servidor: " +
@@ -68,8 +92,7 @@ public class modificarEstudiante extends AppCompatActivity {
                         ", Apellidos: " + nuevosApellidos +
                         ", Correo: " + nuevoCorreo +
                         ", Dirección: " + nuevaDireccion +
-                        ", Teléfono: " + nuevoTelefono +
-                        ", Foto: " + nuevaFoto);
+                        ", Teléfono: " + nuevoTelefono);
 
                 // Crear objeto JSON con los datos modificados
                 JSONObject jsonBody = new JSONObject();
@@ -79,7 +102,7 @@ public class modificarEstudiante extends AppCompatActivity {
                     jsonBody.put("correo", nuevoCorreo);
                     jsonBody.put("direccion", nuevaDireccion);
                     jsonBody.put("telefono", nuevoTelefono);
-                    jsonBody.put("foto", nuevaFoto);
+
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -122,7 +145,7 @@ public class modificarEstudiante extends AppCompatActivity {
         txtCorreo.setText(estudiante.getCorreo());
         txtDireccion.setText(estudiante.getDireccion());
         txtTelefono.setText(estudiante.getTelf());
-        txtFoto.setText(estudiante.getFoto());
+
     }
 
     // Método para enviar una solicitud PUT al servidor

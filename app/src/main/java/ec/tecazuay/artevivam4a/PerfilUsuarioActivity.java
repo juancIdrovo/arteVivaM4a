@@ -1,5 +1,6 @@
 package ec.tecazuay.artevivam4a;
 
+import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Color;
@@ -15,16 +16,26 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 
@@ -38,7 +49,7 @@ public class PerfilUsuarioActivity  extends AppCompatActivity {
     private String cedula;
     Button btnNotas, btnHorario, btnDocente, btnmodificar, btnCurso;
     ImageView opt;
-
+    String url = "http://192.168.1.21:8080/api/estudiantes";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -116,20 +127,11 @@ public class PerfilUsuarioActivity  extends AppCompatActivity {
         Button signOutButton = popupView.findViewById(R.id.sign_out_button);
 
         // Set click listeners for the buttons
-        modifyProfileButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Handle the "Modificar perfil" button click
-                startActivity(new Intent(PerfilUsuarioActivity.this, modificarEstudiante.class));
-                popupWindow.dismiss();
-            }
-        });
+
 
         signOutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Handle the "Cerrar sesión" button click
-
                 popupWindow.dismiss();
             }
         });
@@ -138,7 +140,59 @@ public class PerfilUsuarioActivity  extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                startActivity(new Intent(PerfilUsuarioActivity.this, modificarEstudiante.class));
+                    JSONObject jsonBody = new JSONObject();
+                    JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, jsonBody,
+                            new Response.Listener<JSONObject>() {
+                                @Override
+                                public void onResponse(JSONObject response) {
+                                    try {
+                                        String status = response.optString("status", "");
+
+                                        if (!status.equals("error")) {
+                                            // Extract user's name and email from the response
+                                            String nombre = response.optString("nombres", "");
+                                            String correo = response.optString("correo", "");
+                                            String imageUri = response.optString("foto", "");
+                                            String cedula = response.optString("cedula", "");
+                                            //
+                                            String apellido = response.optString("apellidos", "");
+                                            String direccion = response.optString("direccion", "");
+                                            String telefono = response.optString("telf", "");
+                                            String contrasena = response.optString("contrasena", "");
+                                            String fecha = response.optString("fecha_nac", "");
+
+
+                                            // Pass the user's name, email, and image URL as extras
+                                            Intent intent = new Intent(PerfilUsuarioActivity.this, modificarEstudiante.class);
+                                            intent.putExtra("user_name", nombre);
+                                            intent.putExtra("user_email", correo);
+                                            intent.putExtra("cedula",cedula);
+                                            intent.putExtra("image_uri", imageUri.toString());
+                                            intent.putExtra("apellido", apellido);
+                                            intent.putExtra("direccion", direccion);
+                                            intent.putExtra("telefono", telefono);
+                                            intent.putExtra("contrasena", contrasena);
+                                            intent.putExtra("fecha", fecha);
+
+                                            startActivity(intent);
+                                        } else {
+                                            Toast.makeText(PerfilUsuarioActivity.this, "Autenticación fallida", Toast.LENGTH_LONG).show();
+                                        }
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Log.e("LoginActivity", "Error en la solicitud: " + error.getMessage());
+                            Toast.makeText(PerfilUsuarioActivity.this, "Error en la solicitud: " + error.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    });
+
+                    RequestQueue requestQueue = Volley.newRequestQueue(PerfilUsuarioActivity.this);
+                    requestQueue.add(request);
+
 
             }
 
