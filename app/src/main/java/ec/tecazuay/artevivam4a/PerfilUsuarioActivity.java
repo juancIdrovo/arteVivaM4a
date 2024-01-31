@@ -151,7 +151,7 @@ public class PerfilUsuarioActivity  extends AppCompatActivity {
     private void updateUI() {
         TextView tvName = findViewById(R.id.tvName);
         TextView tvMail = findViewById(R.id.tvMail);
-        ImageView ivUserImage = findViewById(R.id.imageViewfoto);
+        ImageView ivUserImage = findViewById(R.id.fotoPerfil);
 
         tvName.setText(userName);
         tvMail.setText(userEmail);

@@ -79,23 +79,22 @@
         android:contentDescription="Botón de opciones"
         android:src="@drawable/trespuntosopt34" />
 
-    <ImageView
-        android:id="@+id/imageViewfoto"
-        android:layout_width="233dp"
-        android:layout_height="272dp"
-        android:layout_alignParentStart="false"
-        android:layout_alignParentTop="false"
-        android:layout_alignParentEnd="false"
-        android:layout_alignParentBottom="false"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/fotoPerfil"
+        android:layout_width="236dp"
+        android:layout_height="237dp"
+
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="39dp"
-        android:layout_marginEnd="130dp"
-        android:layout_marginBottom="534dp"
-        android:background="#5E5858"
-        android:scaleType="centerCrop"
+        android:layout_marginStart="87dp"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="88dp"
+        android:src="@drawable/luffiperfil"
+        app:civ_border_color="#000000"
+        app:civ_border_width="3dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.868"
-        app:layout_constraintStart_toStartOf="@id/tvName" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtbuscar" />
 
     <TextView
         android:id="@+id/tvName"
