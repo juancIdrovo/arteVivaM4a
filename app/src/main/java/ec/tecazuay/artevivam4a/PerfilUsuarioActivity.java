@@ -49,7 +49,7 @@ public class PerfilUsuarioActivity  extends AppCompatActivity {
     private String cedula;
     Button btnNotas, btnHorario, btnDocente, btnmodificar, btnCurso;
     ImageView opt;
-    String url = "http://192.168.1.21:8080/api/estudiantes";
+    String url = "http://192.168.1.2:8080/api/estudiantes";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
