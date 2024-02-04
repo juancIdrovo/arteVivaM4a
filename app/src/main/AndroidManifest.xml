@@ -26,6 +26,9 @@
             android:name=".Docente"
             android:exported="true" />
         <activity
+            android:name=".MatriculasActivity"
+            android:exported="true" />
+        <activity
             android:name=".modificarEstudiante"
             android:exported="true" />
         <activity
@@ -44,7 +47,7 @@
             android:name=".Horarios"
             android:exported="true" />
         <activity
-            android:name=".Cursos"
+            android:name=".Asignaturas"
             android:exported="true" />
         <activity
             android:name=".RegistroEstudiante"

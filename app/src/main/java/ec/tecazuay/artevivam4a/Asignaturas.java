@@ -23,13 +23,13 @@ import java.util.List;
 
 import ec.tecazuay.artevivam4a.modelo.asigna;
 
-public class Cursos extends AppCompatActivity {
+public class Asignaturas extends AppCompatActivity {
 
     Button btnGuardar, btnCancelar;
     List<String> datos = new ArrayList<String>();
     ListView lst;
     RequestQueue qeqeq;
-    String url = "http://192.168.18.17:8080/api/asignaturas";
+    String url = "http://192.168.18.17:8080/api/matriculas";
 
     String userEmail;
     @Override
@@ -45,7 +45,7 @@ public class Cursos extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                startActivity(new Intent(Cursos.this, PerfilUsuarioActivity.class));
+                startActivity(new Intent(Asignaturas.this, PerfilUsuarioActivity.class));
 
             }
         });
@@ -84,7 +84,4 @@ public class Cursos extends AppCompatActivity {
         });
         qeqeq.add(request);
     }
-
-
-
 }

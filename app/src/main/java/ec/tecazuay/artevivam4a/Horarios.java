@@ -48,7 +48,7 @@ public class Horarios extends AppCompatActivity {
         lst=(ListView)findViewById(R.id.recyclerViewHorarios);
         qeqeq= Volley.newRequestQueue(this);
         GetApiData();
-        url= "http://192.168.40.85:8080/api/matriculas/horario/"+cedula;
+        url= "http://192.168.18.17:8080/api/matriculas/horario/"+cedula;
 
 
         btnCancelar.setOnClickListener(new View.OnClickListener() {

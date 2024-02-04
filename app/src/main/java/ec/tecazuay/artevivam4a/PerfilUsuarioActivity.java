@@ -1,7 +1,5 @@
 package ec.tecazuay.artevivam4a;
 
-import android.app.ProgressDialog;
-import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -34,12 +32,7 @@ import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
 
-import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.File;
-
-import ec.tecazuay.artevivam4a.modelo.Estudiante;
 
 
 public class PerfilUsuarioActivity  extends AppCompatActivity {
@@ -49,7 +42,7 @@ public class PerfilUsuarioActivity  extends AppCompatActivity {
     private String cedula;
     Button btnNotas, btnHorario, btnDocente, btnmodificar, btnCurso;
     ImageView opt;
-    String url = "http://192.168.1.2:8080/api/estudiantes";
+    String url = "http://192.168.18.17:8080/api/estudiantes";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,7 +98,7 @@ public class PerfilUsuarioActivity  extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                startActivity(new Intent(PerfilUsuarioActivity.this, Cursos.class).putExtra("user_email",userEmail));
+                startActivity(new Intent(PerfilUsuarioActivity.this, MatriculasActivity.class).putExtra("user_email",userEmail));
 
             }
         });
