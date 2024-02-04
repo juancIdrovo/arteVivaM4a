@@ -26,12 +26,12 @@ public class MatriculasActivity extends AppCompatActivity {
 
     private RecyclerView recyclerViewMatriculas;
     private MatriculasAdapter matriculasAdapter;
-
+    private String cedula;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_matriculas);
-
+        cedula=getIntent().getStringExtra("cedula");
         // Inicializar vistas
         recyclerViewMatriculas = findViewById(R.id.recyclerViewMatriculas);
         Button btnBackToMenu = findViewById(R.id.btnBackToMenu);
@@ -50,7 +50,7 @@ public class MatriculasActivity extends AppCompatActivity {
         });
 
         // Obtener las matrículas del estudiante
-        new ObtenerMatriculasTask().execute("0104455647"); // Reemplaza con el ID del estudiante
+        new ObtenerMatriculasTask().execute(cedula); // Reemplaza con el ID del estudiante
     }
 
     private class ObtenerMatriculasTask extends AsyncTask<String, Void, List<Matricula>> {
@@ -62,7 +62,7 @@ public class MatriculasActivity extends AppCompatActivity {
             try {
                 // Configurar Retrofit para tu API
                 Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl("http://192.168.18.17:8080/") // Coloca la URL base de tu API
+                        .baseUrl("http://192.168.18.254:8080/") // Coloca la URL base de tu API
                         .addConverterFactory(GsonConverterFactory.create())
                         .build();
 
