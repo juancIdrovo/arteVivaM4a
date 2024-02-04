@@ -42,7 +42,7 @@ public class PerfilUsuarioActivity  extends AppCompatActivity {
     private String cedula;
     Button btnNotas, btnHorario, btnDocente, btnmodificar, btnCurso;
     ImageView opt;
-    String url = "http://192.168.18.254:8080/api/estudiantes";
+    String url = "http://192.168.18.254:8080/api/estudiantes/";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -134,7 +134,7 @@ public class PerfilUsuarioActivity  extends AppCompatActivity {
 
 
                     JSONObject jsonBody = new JSONObject();
-                    JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, jsonBody,
+                    JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url+cedula, jsonBody,
                             new Response.Listener<JSONObject>() {
                                 @Override
                                 public void onResponse(JSONObject response) {
