@@ -92,7 +92,7 @@ public class Horarios extends AppCompatActivity {
                 ApiService service = retrofit.create(ApiService.class);
 
                 // Realizar la llamada síncrona a la API
-                Call<List<Horarioss>> call = service.getHorarios();
+                Call<List<Horarioss>> call = service.getHorarios(cedula);
 
                 // Imprimir la URL completa después de realizar la llamada
                 Log.d(TAG, "URL de la API: " + call.request().url());

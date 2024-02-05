@@ -14,7 +14,7 @@ public interface ApiService {
     Call<List<Matricula>> getMatriculas(@Path("idEstudiante") String idEstudiante);
     // Otros métodos si es necesario
 
-    @GET("api/horarios")
-    Call<List<Horarioss>> getHorarios();
+    @GET("api/horarios/estudiante/{idEstudiante}")
+    Call<List<Horarioss>> getHorarios(@Path("idEstudiante") String idEstudiante);
 
 }
