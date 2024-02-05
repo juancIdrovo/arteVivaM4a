@@ -163,7 +163,6 @@ public class PerfilUsuarioActivity  extends AppCompatActivity {
                                             intent.putExtra("telefono", telefono);
                                             intent.putExtra("contrasena", contrasena);
                                             intent.putExtra("fecha_nac", fecha_nac);
-
                                             startActivity(intent);
                                         } else {
                                             Toast.makeText(PerfilUsuarioActivity.this, "Autenticación fallida", Toast.LENGTH_LONG).show();
@@ -206,8 +205,7 @@ public class PerfilUsuarioActivity  extends AppCompatActivity {
             Glide.with(this)
                     .load(imageUri)
                     .apply(new RequestOptions()
-                            .placeholder(R.drawable.logosinfondo)  // Imagen de marcador de posición mientras carga
-                            .error(R.drawable.tati)        // Imagen de marcador de posición en caso de error
+                             // Imagen de marcador de posición en caso de error
                     )
                     .listener(new RequestListener<Drawable>() {
                         @Override
@@ -229,5 +227,6 @@ public class PerfilUsuarioActivity  extends AppCompatActivity {
             ivUserImage.setImageResource(R.drawable.luffiperfil);
         }
     }
+
 }
 

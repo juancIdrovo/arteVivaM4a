@@ -136,7 +136,6 @@ public class modificarEstudiante extends AppCompatActivity {
                                 intent.putExtra("user_email", nuevoCorreo);
                                 intent.putExtra("image_uri", imageUri.toString());
                                 Log.d("LoginActivity", "Respuesta del servidor: " + response.toString());
-
                                 startActivity(intent);
                             }
                         },
@@ -270,8 +269,8 @@ public class modificarEstudiante extends AppCompatActivity {
             Glide.with(this)
                     .load(imageUri)
                     .apply(new RequestOptions()
-                            .placeholder(R.drawable.logosinfondo)  // Imagen de marcador de posición mientras carga
-                            .error(R.drawable.tati)        // Imagen de marcador de posición en caso de error
+                             // Imagen de marcador de posición mientras carga
+                              // Imagen de marcador de posición en caso de error
                     )
                     .listener(new RequestListener<Drawable>() {
                         @Override
