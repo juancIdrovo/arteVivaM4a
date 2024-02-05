@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import ec.tecazuay.artevivam4a.modelo.Asignatura;
 import ec.tecazuay.artevivam4a.modelo.Matricula;
 
 public class MatriculasAdapter extends RecyclerView.Adapter<MatriculasAdapter.MatriculaViewHolder> {
@@ -29,9 +30,13 @@ public class MatriculasAdapter extends RecyclerView.Adapter<MatriculasAdapter.Ma
     @Override
     public void onBindViewHolder(@NonNull MatriculaViewHolder holder, int position) {
         Matricula matricula = matriculas.get(position);
+        Asignatura asignatura = matricula.getAsignatura();
 
-        // Configurar la vista del elemento de la matrícula aquí
-        holder.tvAsignatura.setText("Asignatura: " + matricula.getCodigoAsignatura());
+        if (asignatura != null) {
+            holder.tvAsignatura.setText("Asignatura: " + asignatura.getNombre());
+            holder.tvDescripcion.setText("Descripción: " + asignatura.getDescripcion());
+        }
+
         holder.tvEstado.setText("Estado: " + matricula.getEstado());
         holder.tvCalificacion.setText("Calificación: " + matricula.getCalificacion());
         holder.tvFechaInicio.setText("Empezó en: " + matricula.getFecha_ini().toString());
@@ -54,6 +59,7 @@ public class MatriculasAdapter extends RecyclerView.Adapter<MatriculasAdapter.Ma
         public TextView tvCalificacion;
         public TextView tvFechaInicio;
         public TextView tvFechaFin;
+        public TextView tvDescripcion;
 
         public MatriculaViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -63,6 +69,7 @@ public class MatriculasAdapter extends RecyclerView.Adapter<MatriculasAdapter.Ma
             tvCalificacion = itemView.findViewById(R.id.tvCalificacion);
             tvFechaInicio = itemView.findViewById(R.id.tvFechaInicio);
             tvFechaFin = itemView.findViewById(R.id.tvFechaFin);
+            tvDescripcion = itemView.findViewById(R.id.tvDescripcion);
         }
     }
 }

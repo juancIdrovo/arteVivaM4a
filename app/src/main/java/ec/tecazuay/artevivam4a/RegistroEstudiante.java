@@ -116,6 +116,7 @@ public class RegistroEstudiante extends AppCompatActivity {
         String contrasena = ((TextInputEditText) findViewById(R.id.txtContrasena)).getText().toString().trim();
         String fechaString = ((TextInputEditText) findViewById(R.id.txtFechaNac)).getText().toString().trim();
         Date fecha = null;
+        String tipoUsuario = ((TextInputEditText) findViewById(R.id.txtEstudiante)).getText().toString().trim();
 
         if (!fechaString.isEmpty()) {
             try {
@@ -138,7 +139,8 @@ public class RegistroEstudiante extends AppCompatActivity {
             jsonBody.put("telf", telf);
             jsonBody.put("contrasena", contrasena);
             jsonBody.put("cedula_estudiante_fk", cedula);
-
+            jsonBody.put("contrasena", contrasena);
+            jsonBody.put("tipoUsuario", tipoUsuario);
             if (fecha != null) {
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
                 String fechaFormateada = sdf.format(fecha);

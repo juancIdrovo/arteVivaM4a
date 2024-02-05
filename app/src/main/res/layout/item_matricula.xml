@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="20dp">
 
     <TextView
         android:id="@+id/tvAsignatura"
@@ -13,7 +13,18 @@
         android:layout_height="wrap_content"
         android:text="Asignatura: "
         android:textStyle="bold"
-        android:textSize="16sp"/>
+        android:textSize="18sp"
+        android:textColor="@color/maradito"/>
+
+    <TextView
+        android:id="@+id/tvDescripcion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Descripción:"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:textColor="@color/maradito"
+        />
 
     <TextView
         android:id="@+id/tvEstado"
@@ -21,7 +32,9 @@
         android:layout_height="wrap_content"
         android:text="Estado: "
         android:textStyle="bold"
-        android:textSize="16sp"/>
+        android:textSize="18sp"
+        android:textColor="@color/maradito"
+        />
 
     <TextView
         android:id="@+id/tvCalificacion"
@@ -29,7 +42,9 @@
         android:layout_height="wrap_content"
         android:text="Calificación: "
         android:textStyle="bold"
-        android:textSize="16sp"/>
+        android:textSize="18sp"
+        android:textColor="@color/maradito"
+        />
 
     <TextView
         android:id="@+id/tvFechaInicio"
@@ -37,7 +52,9 @@
         android:layout_height="wrap_content"
         android:text="Empezó en: "
         android:textStyle="bold"
-        android:textSize="16sp"/>
+        android:textSize="18sp"
+        android:textColor="@color/maradito"
+        />
 
     <TextView
         android:id="@+id/tvFechaFin"
@@ -45,6 +62,10 @@
         android:layout_height="wrap_content"
         android:text="Termina en: "
         android:textStyle="bold"
-        android:textSize="16sp"/>
+        android:textSize="18sp"
+        android:textColor="@color/maradito"
+        />
+
+
 
 </LinearLayout>

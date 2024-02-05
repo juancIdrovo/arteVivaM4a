@@ -25,7 +25,7 @@ import ec.tecazuay.artevivam4a.modelo.asigna;
 
 public class Asignaturas extends AppCompatActivity {
 
-    Button btnGuardar, btnCancelar;
+   /* Button btnGuardar, btnCancelar;
     List<String> datos = new ArrayList<String>();
     ListView lst;
     RequestQueue qeqeq;
@@ -83,5 +83,5 @@ public class Asignaturas extends AppCompatActivity {
             }
         });
         qeqeq.add(request);
-    }
+    }*/
 }

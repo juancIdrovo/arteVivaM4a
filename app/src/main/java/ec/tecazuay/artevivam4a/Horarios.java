@@ -84,7 +84,7 @@ public class Horarios extends AppCompatActivity {
             try {
                 // Configurar Retrofit para tu API
                 Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl("http://192.168.18.254:8080/") // Coloca la URL base de tu API
+                        .baseUrl("http://192.168.18.17:8080/") // Coloca la URL base de tu API
                         .addConverterFactory(GsonConverterFactory.create())
                         .build();
 

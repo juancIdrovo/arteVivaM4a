@@ -56,6 +56,7 @@
             android:layout_width="201dp"
             android:layout_height="66dp"
             android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -73,6 +74,7 @@
             android:id="@+id/textInputLayoutNombres"
             android:layout_width="201dp"
             android:layout_height="68dp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayoutCedula">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -90,6 +92,7 @@
             android:id="@+id/textInputLayoutApellidos"
             android:layout_width="201dp"
             android:layout_height="65dp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNombres">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -230,6 +233,27 @@
             app:layout_constraintHorizontal_bias="0.888"
             app:layout_constraintStart_toStartOf="@+id/textInputLayoutApellidos"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutEstudiante"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutFechaNac"
+            android:visibility="gone">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtEstudiante"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="estudiante"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:enabled="false"
+            android:focusable="false"
+            android:background="@android:color/transparent"
+            />
+        </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

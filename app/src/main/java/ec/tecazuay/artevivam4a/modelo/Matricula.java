@@ -31,6 +31,12 @@ public class Matricula {
         this.codigoAsignatura = codigoAsignatura;
     }
 
+    private Asignatura asignatura;
+
+    public Asignatura getAsignatura() {
+        return asignatura;
+    }
+
     public Long getCod_matricula_pk() {
         return cod_matricula_pk;
     }
