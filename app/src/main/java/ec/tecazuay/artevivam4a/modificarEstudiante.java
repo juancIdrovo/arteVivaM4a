@@ -8,6 +8,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -38,20 +39,27 @@ import com.google.android.material.textfield.TextInputEditText;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 import ec.tecazuay.artevivam4a.modelo.Estudiante;
 
 public class modificarEstudiante extends AppCompatActivity {
-    EditText txtNombres, txtApellidos, txtCorreo, txtDireccion, txtTelefono, txtcedula, txtFecha;
+    EditText txtNombres, txtApellidos, txtCorreo, txtDireccion, txtTelefono, txtcedula, txtFecha, txtContrasena;
     Button btnGuarda, btnCancelar;
     Button btnSeleccionarFoto;
+
     private static final int REQUEST_IMAGE_PICK = 1;
     private String userName, apellidos, direccion, contrasena, telefono, fecha_nac;
     private String userEmail;
     private Uri imageUri;
     private String cedula;
+    private ImageView imageView;
 
 
 
@@ -68,7 +76,7 @@ public class modificarEstudiante extends AppCompatActivity {
         userEmail = getIntent().getStringExtra("user_email");
         imageUri = Uri.parse(getIntent().getStringExtra("image_uri"));
         contrasena  = getIntent().getStringExtra("contrasena");
-        fecha_nac  = getIntent().getStringExtra("fecha_nac");
+        fecha_nac = getIntent().getStringExtra("fecha_nac");
 
 
         txtNombres = findViewById(R.id.txtnombres);
@@ -78,13 +86,12 @@ public class modificarEstudiante extends AppCompatActivity {
         txtTelefono = findViewById(R.id.txttelf);
         txtcedula = findViewById(R.id.txtcedula);
         txtFecha = findViewById(R.id.txtFechaNac);
+        txtContrasena = findViewById(R.id.txtcontrasena);
         btnGuarda = findViewById(R.id.btnGuardar);
+        imageView = findViewById(R.id.fotoPerfil);
         btnCancelar = findViewById(R.id.btnCancelar);
         btnSeleccionarFoto = findViewById(R.id.btnfotito);
         updateUI();
-        Intent intent = getIntent();
-
-        Estudiante estudiante = obtenerDatosEstudianteActual();
         btnSeleccionarFoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,78 +99,123 @@ public class modificarEstudiante extends AppCompatActivity {
                 startActivityForResult(intent, REQUEST_IMAGE_PICK);
             }
         });
+
         Button btnGuardar = findViewById(R.id.btnGuardar);
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Obtener datos modificados
+                // Obtener datos del estudiante modificado
                 String nuevosNombres = txtNombres.getText().toString();
                 String nuevosApellidos = txtApellidos.getText().toString();
                 String nuevoCorreo = txtCorreo.getText().toString();
                 String nuevaDireccion = txtDireccion.getText().toString();
                 String nuevoTelefono = txtTelefono.getText().toString();
-
-
-                // Mostrar los datos que se están enviando antes de la solicitud PUT
-                Log.d("Depuración", "Datos a enviar al servidor: " +
-                        "Nombres: " + nuevosNombres +
-                        ", Apellidos: " + nuevosApellidos +
-                        ", Correo: " + nuevoCorreo +
-                        ", Dirección: " + nuevaDireccion +
-                        ", Teléfono: " + nuevoTelefono);
-
-                // Crear objeto JSON con los datos modificados
-                JSONObject jsonBody = new JSONObject();
-                try {
-                    jsonBody.put("nombres", nuevosNombres);
-                    jsonBody.put("apellidos", nuevosApellidos);
-                    jsonBody.put("correo", nuevoCorreo);
-                    jsonBody.put("direccion", nuevaDireccion);
-                    jsonBody.put("telefono", nuevoTelefono);
-
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                String nuevaContrasena = txtContrasena.getText().toString();
+                String nuevaFecha = ((TextInputEditText) findViewById(R.id.txtFechaNac)).getText().toString().trim();
+                Date fecha = null;
+                if (!nuevaFecha.isEmpty()) {
+                    try {
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+                        fecha = sdf.parse(nuevaFecha);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                        // Manejar la excepción si la cadena no se puede convertir a Date
+                    }
                 }
 
-                // Enviar solicitud PUT al servidor
 
-                String url = "http://192.168.137.141:8080/api/estudiantes/" + estudiante.getCedula();
-                 enviarSolicitudPut(url, jsonBody);
+                Estudiante estudianteModificado = new Estudiante(cedula, nuevosNombres, nuevosApellidos, nuevoCorreo, nuevaDireccion, nuevoTelefono, null, fecha, nuevaContrasena, cedula);
+
+                updateStudent(estudianteModificado,
+                        new Response.Listener<JSONObject>() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                Toast.makeText(modificarEstudiante.this, "Estudiante modificado correctamente", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(modificarEstudiante.this, PerfilUsuarioActivity.class);
+                                intent.putExtra("user_name", nuevosNombres);
+                                intent.putExtra("user_email", nuevoCorreo);
+                                intent.putExtra("image_uri", imageUri.toString());
+                                Log.d("LoginActivity", "Respuesta del servidor: " + response.toString());
+
+                                startActivity(intent);
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                Log.e("VolleyError", "Error al modificar estudiante: " + error.getMessage(), error);
+                                if (error.networkResponse != null && error.networkResponse.data != null) {
+                                    String responseBody = new String(error.networkResponse.data);
+                                    Log.e("VolleyError", "Respuesta del servidor: " + responseBody);
+                                }
+                                // Mostrar un mensaje de error al usuario (puedes personalizarlo según tus necesidades)
+                                Toast.makeText(modificarEstudiante.this, "Error al modificar estudiante. Consulta el LogCat para más detalles.", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                );
             }
         });
-
         Button btnCancelar = findViewById(R.id.btnCancelar);
         btnCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Agregar el código para ir a la actividad "perfil_usuario"
-                Intent intent = new Intent(modificarEstudiante.this, PerfilUsuarioActivity.class);
-                startActivity(intent);
+                onBackPressed();
+
             }
         });
     }
-
-    private void enviarSolicitudPut(String url, JSONObject jsonBody) {
+    private void updateStudent(Estudiante estudiante, Response.Listener<JSONObject> successListener, Response.ErrorListener errorListener) {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, jsonBody,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        Toast.makeText(modificarEstudiante.this, "Datos actualizados correctamente", Toast.LENGTH_SHORT).show();
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(modificarEstudiante.this, "Error al actualizar datos: " + error.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+        String url = "http://192.168.1.6:8080/api/estudiantes/" + estudiante.getCedula();
+
+        JSONObject jsonBody = new JSONObject();
+        try {
+            jsonBody.put("nombres", estudiante.getNombres());
+            jsonBody.put("apellidos", estudiante.getApellidos());
+            jsonBody.put("correo", estudiante.getCorreo());
+            jsonBody.put("direccion", estudiante.getDireccion());
+            jsonBody.put("telf", estudiante.getTelf());
+            jsonBody.put("contrasena", estudiante.getContrasena());
+            if (estudiante.getFecha_nac() != null) {
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+                String fechaFormateada = sdf.format(estudiante.getFecha_nac());
+                jsonBody.put("fecha_nac", fechaFormateada);
+            } else {
+                Log.e("RegistroEstudiante", "La fecha es null, no se añadió al JSONObject");
+            }
+            if (imageUri != null) {
+                String base64Image = convertirImagenBase64(imageUri);
+                jsonBody.put("foto", base64Image);
+            } else {
+                Log.e("RegistroEstudiante", "imageUri es null en clickbtnGuardar");
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.PUT, url, jsonBody, successListener, errorListener);
 
         requestQueue.add(request);
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
+        if (requestCode == REQUEST_IMAGE_PICK && resultCode == RESULT_OK) {
+            imageUri = data.getData();
+
+            if (imageUri != null) {
+
+                imageView.setImageURI(imageUri);
+            } else {
+                Toast.makeText(this, "No se ha seleccionado ninguna imagen.", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
     public void showDatePickerDialog(View view) {
         DialogFragment newFragment = new DatePickerFragment();
         newFragment.show(getSupportFragmentManager(), "datePicker");
@@ -242,20 +294,20 @@ public class modificarEstudiante extends AppCompatActivity {
         }
 
     }
-    private Estudiante obtenerDatosEstudianteActual() {
-        Intent intent = getIntent();
+    private String convertirImagenBase64(Uri imageUri) {
         try {
-            if (intent != null && intent.hasExtra("estudiante")) {
-                return (Estudiante) intent.getSerializableExtra("estudiante");
-            } else {
-                // Manejar el caso en el que no se proporcionaron los datos del estudiante.
-                return new Estudiante(); // Puedes ajustar esto según tu lógica de creación de objetos Estudiante vacíos.
-            }
-        } catch (Exception e) {
+            InputStream inputStream = getContentResolver().openInputStream(imageUri);
+            byte[] bytes = new byte[inputStream.available()];
+            inputStream.read(bytes);
+            inputStream.close();
+            return "data:image/jpeg;base64," + Base64.encodeToString(bytes, Base64.DEFAULT);
+        } catch (IOException e) {
             e.printStackTrace();
-            return new Estudiante();
+            Log.e("RegistroEstudiante", "Error al convertir imagen a base64");
+            return null;
         }
     }
+
 }
 
 

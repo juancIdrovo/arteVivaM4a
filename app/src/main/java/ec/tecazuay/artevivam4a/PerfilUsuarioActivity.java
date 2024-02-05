@@ -162,7 +162,7 @@ public class PerfilUsuarioActivity  extends AppCompatActivity {
                                             intent.putExtra("direccion", direccion);
                                             intent.putExtra("telefono", telefono);
                                             intent.putExtra("contrasena", contrasena);
-                                            intent.putExtra("fecha", fecha_nac);
+                                            intent.putExtra("fecha_nac", fecha_nac);
 
                                             startActivity(intent);
                                         } else {

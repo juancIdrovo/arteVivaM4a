@@ -95,7 +95,6 @@
                 android:layout_width="189dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_text_field"
-                android:editable="false"
                 android:hint="Nombres"
                 android:textColor="@color/black"
                 android:textSize="17sp"
