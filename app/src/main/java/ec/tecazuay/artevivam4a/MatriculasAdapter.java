@@ -12,6 +12,7 @@ import java.util.List;
 
 import ec.tecazuay.artevivam4a.modelo.Asignatura;
 import ec.tecazuay.artevivam4a.modelo.Matricula;
+import ec.tecazuay.artevivam4a.modelo.Profesor;
 
 public class MatriculasAdapter extends RecyclerView.Adapter<MatriculasAdapter.MatriculaViewHolder> {
     private List<Matricula> matriculas;
@@ -31,16 +32,21 @@ public class MatriculasAdapter extends RecyclerView.Adapter<MatriculasAdapter.Ma
     public void onBindViewHolder(@NonNull MatriculaViewHolder holder, int position) {
         Matricula matricula = matriculas.get(position);
         Asignatura asignatura = matricula.getAsignatura();
+        Profesor profesor = matricula.getProfesor(); // Nuevo
 
         if (asignatura != null) {
             holder.tvAsignatura.setText("Asignatura: " + asignatura.getNombre());
             holder.tvDescripcion.setText("Descripción: " + asignatura.getDescripcion());
         }
 
+        if (profesor != null) {
+            holder.tvnomApe.setText("Docente: " + profesor.getNombres() + " " + profesor.getApellidos());
+        }
+
         holder.tvEstado.setText("Estado: " + matricula.getEstado());
         holder.tvCalificacion.setText("Calificación: " + matricula.getCalificacion());
-        holder.tvFechaInicio.setText("Empezó en: " + matricula.getFecha_ini().toString());
-        holder.tvFechaFin.setText("Termina en: " + matricula.getFeche_fin().toString());
+        holder.tvFechaInicio.setText("Empezó en: " + matricula.getFechaInicioFormatted());
+        holder.tvFechaFin.setText("Termina en: " + matricula.getFechaFinFormatted());
     }
 
     @Override
@@ -60,6 +66,7 @@ public class MatriculasAdapter extends RecyclerView.Adapter<MatriculasAdapter.Ma
         public TextView tvFechaInicio;
         public TextView tvFechaFin;
         public TextView tvDescripcion;
+        public TextView tvnomApe;
 
         public MatriculaViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -70,6 +77,7 @@ public class MatriculasAdapter extends RecyclerView.Adapter<MatriculasAdapter.Ma
             tvFechaInicio = itemView.findViewById(R.id.tvFechaInicio);
             tvFechaFin = itemView.findViewById(R.id.tvFechaFin);
             tvDescripcion = itemView.findViewById(R.id.tvDescripcion);
+            tvnomApe = itemView.findViewById(R.id.tvnomApe);
         }
     }
 }
