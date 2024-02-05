@@ -42,7 +42,7 @@ public class PerfilUsuarioActivity  extends AppCompatActivity {
     private String cedula;
     Button btnNotas, btnHorario, btnDocente, btnmodificar, btnCurso;
     ImageView opt;
-    String url = "http://192.168.18.17.254:8080/api/estudiantes/";
+    String url = "http://192.168.1.6:8080/api/estudiantes/";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -142,30 +142,27 @@ public class PerfilUsuarioActivity  extends AppCompatActivity {
                                         String status = response.optString("status", "");
 
                                         if (!status.equals("error")) {
-                                            // Extract user's name and email from the response
+
                                             String nombre = response.optString("nombres", "");
                                             String correo = response.optString("correo", "");
                                             String imageUri = response.optString("foto", "");
                                             String cedula = response.optString("cedula", "");
-                                            //
                                             String apellido = response.optString("apellidos", "");
                                             String direccion = response.optString("direccion", "");
                                             String telefono = response.optString("telf", "");
                                             String contrasena = response.optString("contrasena", "");
-                                            String fecha = response.optString("fecha_nac", "");
+                                            String fecha_nac = response.optString("fecha_nac", "");
 
-
-                                            // Pass the user's name, email, and image URL as extras
                                             Intent intent = new Intent(PerfilUsuarioActivity.this, modificarEstudiante.class);
                                             intent.putExtra("user_name", nombre);
                                             intent.putExtra("user_email", correo);
                                             intent.putExtra("cedula",cedula);
                                             intent.putExtra("image_uri", imageUri.toString());
-                                            intent.putExtra("apellido", apellido);
+                                            intent.putExtra("apellidos", apellido);
                                             intent.putExtra("direccion", direccion);
                                             intent.putExtra("telefono", telefono);
                                             intent.putExtra("contrasena", contrasena);
-                                            intent.putExtra("fecha", fecha);
+                                            intent.putExtra("fecha", fecha_nac);
 
                                             startActivity(intent);
                                         } else {

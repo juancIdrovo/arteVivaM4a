@@ -12,103 +12,141 @@
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="417dp"
-            android:layout_height="731dp"
+            android:layout_width="451dp"
+            android:layout_height="758dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
             tools:srcCompat="@color/rosaditoPalo" />
+
+        <!-- Campo cedula -->
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/fotoPerfil"
+            android:layout_width="136dp"
+            android:layout_height="145dp"
+
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="238dp"
+            android:layout_marginTop="101dp"
+            android:layout_marginEnd="37dp"
+            android:src="@drawable/luffiperfil"
+            app:civ_border_color="#000000"
+            app:civ_border_width="3dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="27dp"
+            android:layout_marginEnd="30dp"
             android:text="Modificar Datos Personales"
             android:textColor="@color/maradito"
             android:textSize="28sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.059" />
-
-        <!-- Campo cedula -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayoutCedula"
-            android:layout_marginTop="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/textView2">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txtcedula"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Cédula"
-                android:editable="false"
-                android:textColor="@color/black"
-                android:background="@drawable/rounded_text_field"
-                android:textStyle="bold"
-                android:textSize="17sp"/>
-        </com.google.android.material.textfield.TextInputLayout>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <!-- Campo nombres -->
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayoutNombres"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutCedula">
+            android:id="@+id/textInputLayoutCedula"
+            android:layout_width="189dp"
+            android:layout_height="67dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginEnd="222dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.048"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txtnombres"
-                android:layout_width="match_parent"
+                android:id="@+id/txtcedula"
+                android:layout_width="189dp"
                 android:layout_height="wrap_content"
-                android:hint="Nombres"
+                android:background="@drawable/rounded_text_field"
+                android:editable="false"
+                android:hint="Cédula"
                 android:textColor="@color/black"
-                android:textStyle="bold"
                 android:textSize="17sp"
-                android:background="@drawable/rounded_text_field"/>
+                android:textStyle="bold" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Campo apellidos -->
+
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayoutApellidos"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNombres">
+            android:id="@+id/textInputLayoutNombres"
+            android:layout_width="189dp"
+            android:layout_height="63dp"
+            android:layout_marginTop="168dp"
+            android:layout_marginEnd="227dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.055"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txtapellidos"
-                android:layout_width="match_parent"
+                android:id="@+id/txtnombres"
+                android:layout_width="189dp"
                 android:layout_height="wrap_content"
-                android:hint="Apellidos"
-                android:textStyle="bold"
+                android:background="@drawable/rounded_text_field"
+                android:editable="false"
+                android:hint="Nombres"
+                android:textColor="@color/black"
                 android:textSize="17sp"
-                android:background="@drawable/rounded_text_field"/>
+                android:textStyle="bold" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Campo correo -->
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutApellidos"
+            android:layout_width="191dp"
+            android:layout_height="64dp"
+            android:layout_marginTop="236dp"
+            android:layout_marginEnd="230dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.064"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtapellidos"
+                android:layout_width="188dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_text_field"
+                android:hint="Apellidos"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Campo direccion -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayoutCorreo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutApellidos">
+            android:layout_marginTop="304dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txtcorreo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/rounded_text_field"
                 android:hint="Correo"
                 android:textColor="@color/black"
-                android:textStyle="bold"
                 android:textSize="17sp"
-                android:background="@drawable/rounded_text_field"/>
+                android:textStyle="bold" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Campo direccion -->
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayoutDireccion"
             android:layout_width="match_parent"
@@ -119,10 +157,10 @@
                 android:id="@+id/txtdireccion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/rounded_text_field"
                 android:hint="Dirección"
-                android:textStyle="bold"
                 android:textSize="17sp"
-                android:background="@drawable/rounded_text_field"/>
+                android:textStyle="bold" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Campo teléfono -->
@@ -136,81 +174,105 @@
                 android:id="@+id/txttelf"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/rounded_text_field"
                 android:hint="Teléfono"
-                android:textStyle="bold"
                 android:textSize="17sp"
-                android:background="@drawable/rounded_text_field"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayoutFoto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutTelf">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txtfoto"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Foto"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:textSize="17sp"
-                android:background="@drawable/rounded_text_field"/>
+                android:textStyle="bold" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Campo fecha de nacimiento -->
+
+        <!-- Botones de guardar y cancelar -->
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayoutFechaNac"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutFoto">
+            android:layout_width="447dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="564dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txtFechaNac"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Fecha de Nacimiento"
-                android:textStyle="bold"
-                android:textSize="17sp"
-                android:textColor="@color/black"
+                android:layout_height="56dp"
                 android:background="@drawable/rounded_text_field"
                 android:focusable="false"
-                android:onClick="showDatePickerDialog"/>
+                android:hint="Fecha de Nacimiento"
+                android:onClick="showDatePickerDialog"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                android:textStyle="bold" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Botones de guardar y cancelar -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutTelf">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtcontrasena"
+                android:layout_width="445dp"
+                android:layout_height="58dp"
+                android:background="@drawable/rounded_text_field"
+                android:hint="Contraseña"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btnGuardar"
             android:layout_width="159dp"
             android:layout_height="53dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="593dp"
+            android:layout_marginEnd="204dp"
             android:layout_marginBottom="56dp"
             android:text="Guardar"
             android:textSize="17sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.099"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutFechaNac" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
         <Button
             android:id="@+id/btnCancelar"
             android:layout_width="159dp"
             android:layout_height="53dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginStart="231dp"
+            android:layout_marginTop="593dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginBottom="56dp"
             android:text="Cancelar"
             android:textSize="17sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.597"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/btnGuardar"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutFechaNac" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <Button
+            android:id="@+id/btnfotito"
+            android:layout_width="161dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="227dp"
+            android:layout_marginTop="247dp"
+            android:layout_marginEnd="23dp"
+            android:text="Seleccionar Foto"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
