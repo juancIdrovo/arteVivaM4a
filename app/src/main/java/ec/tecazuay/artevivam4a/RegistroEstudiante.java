@@ -188,29 +188,6 @@ public class RegistroEstudiante extends AppCompatActivity {
         requestQueue.add(request);
     }
 
-    private String obtenerRutaDesdeUri(Uri imageUri) {
-        if (imageUri == null) {
-            Log.e("RegistroEstudiante", "imageUri es null en obtenerRutaDesdeUri");
-            return null;
-        }
-
-        String[] projection = {MediaStore.Images.Media.DATA};
-        Cursor cursor = null;
-        try {
-            cursor = getContentResolver().query(imageUri, projection, null, null, null);
-            if (cursor != null && cursor.moveToFirst()) {
-                int columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-                return cursor.getString(columnIndex);
-            } else {
-                Log.e("RegistroEstudiante", "Cursor nulo o sin datos en obtenerRutaDesdeUri");
-                return null;
-            }
-        } finally {
-            if (cursor != null) {
-                cursor.close();
-            }
-        }
-    }
     private String convertirImagenBase64(Uri imageUri) {
         try {
             InputStream inputStream = getContentResolver().openInputStream(imageUri);
