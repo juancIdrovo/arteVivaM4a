@@ -1,6 +1,8 @@
 package ec.tecazuay.artevivam4a.modelo;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class Matricula {
 
@@ -14,7 +16,7 @@ public class Matricula {
     private String horario;
     private String ced_estudiante_fk;
     private Long codigoAsignatura;
-
+    private Profesor profesor;
     public Matricula() {
     }
 
@@ -45,21 +47,14 @@ public class Matricula {
         this.cod_matricula_pk = cod_matricula_pk;
     }
 
-    public Date getFecha_ini() {
-        return fecha_ini;
+    public String getFechaInicioFormatted() {
+        return formatDate(fecha_ini);
     }
 
-    public void setFecha_ini(Date fecha_ini) {
-        this.fecha_ini = fecha_ini;
+    public String getFechaFinFormatted() {
+        return formatDate(feche_fin);
     }
 
-    public Date getFeche_fin() {
-        return feche_fin;
-    }
-
-    public void setFeche_fin(Date feche_fin) {
-        this.feche_fin = feche_fin;
-    }
 
     public int getCupo() {
         return cupo;
@@ -115,5 +110,18 @@ public class Matricula {
 
     public void setCodigoAsignatura(Long codigoAsignatura) {
         this.codigoAsignatura = codigoAsignatura;
+    }
+
+    public Profesor getProfesor() {
+        return profesor;
+    }
+
+    public void setProfesor(Profesor profesor) {
+        this.profesor = profesor;
+    }
+
+    private String formatDate(Date date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        return sdf.format(date);
     }
 }

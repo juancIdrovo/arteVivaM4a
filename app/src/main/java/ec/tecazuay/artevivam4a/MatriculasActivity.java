@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ec.tecazuay.artevivam4a.modelo.Matricula;
+import ec.tecazuay.artevivam4a.modelo.Profesor;
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
@@ -69,7 +70,7 @@ public class MatriculasActivity extends AppCompatActivity {
                 // Crear un servicio de Retrofit
                 ApiService service = retrofit.create(ApiService.class);
 
-                // Realizar la llamada síncrona a la API
+                // Realizar la llamada síncrona a la API para obtener las matrículas del estudiante
                 Call<List<Matricula>> call = service.getMatriculas(idEstudiante);
 
                 // Imprimir la URL completa después de realizar la llamada
@@ -77,7 +78,14 @@ public class MatriculasActivity extends AppCompatActivity {
 
                 Response<List<Matricula>> response = call.execute();
                 if (response.isSuccessful()) {
-                    return response.body();
+                    List<Matricula> matriculas = response.body();
+
+                    // Para cada matrícula, obtener información del profesor
+                    for (Matricula matricula : matriculas) {
+                        obtenerInformacionProfesor(matricula);
+                    }
+
+                    return matriculas;
                 } else {
                     // Manejar el error de la API
                     String errorBody = response.errorBody().string();
@@ -90,6 +98,34 @@ public class MatriculasActivity extends AppCompatActivity {
 
             return null;
         }
+
+        private void obtenerInformacionProfesor(Matricula matricula) {
+            try {
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl("http://192.168.18.17:8080/") // Coloca la URL base de tu API
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build();
+
+                ApiService service = retrofit.create(ApiService.class);
+
+                // Obtener información del profesor utilizando la cédula del profesor en la matrícula
+                Call<Profesor> call = service.getProfesor(matricula.getAsignatura().getCed_profesor_fk());
+                Response<Profesor> response = call.execute();
+
+                if (response.isSuccessful()) {
+                    Profesor profesor = response.body();
+                    matricula.setProfesor(profesor);
+                } else {
+                    // Manejar el error de la API para la solicitud del profesor
+                    String errorBody = response.errorBody().string();
+                    Log.e(TAG, "Error al obtener información del profesor: " + errorBody);
+                }
+            } catch (IOException e) {
+                // Manejar excepciones, por ejemplo, falta de conexión a Internet
+                Log.e(TAG, "Excepción al obtener información del profesor", e);
+            }
+        }
+
 
         @Override
         protected void onPostExecute(List<Matricula> matriculas) {
