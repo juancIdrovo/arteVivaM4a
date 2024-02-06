@@ -1,7 +1,5 @@
 package ec.tecazuay.artevivam4a;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -56,7 +54,7 @@ public class PerfilUsuarioActivity  extends AppCompatActivity {
         imageUri = Uri.parse(getIntent().getStringExtra("image_uri"));
 
 
-
+        btnNotas = findViewById(R.id.btnNotes);
         btnHorario = findViewById(R.id.btnSchedule1);
         btnDocente = findViewById(R.id.btnDocentes);
         btnCurso = findViewById(R.id.btnCourses);
@@ -69,7 +67,14 @@ public class PerfilUsuarioActivity  extends AppCompatActivity {
                 showPopupMenu(v);
             }
         });
+        btnNotas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                startActivity(new Intent(PerfilUsuarioActivity.this, Notas.class));
+
+            }
+        });
 
         btnHorario.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,55 +133,54 @@ public class PerfilUsuarioActivity  extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                JSONObject jsonBody = new JSONObject();
-                JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url+cedula, jsonBody,
-                        new Response.Listener<JSONObject>() {
-                            @Override
-                            public void onResponse(JSONObject response) {
-                                try {
-                                    String status = response.optString("status", "");
+                    JSONObject jsonBody = new JSONObject();
+                    JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url+cedula, jsonBody,
+                            new Response.Listener<JSONObject>() {
+                                @Override
+                                public void onResponse(JSONObject response) {
+                                    try {
+                                        String status = response.optString("status", "");
 
-                                    if (!status.equals("error")) {
+                                        if (!status.equals("error")) {
 
-                                        String nombre = response.optString("nombres", "");
-                                        String correo = response.optString("correo", "");
-                                        String imageUri = response.optString("foto", "");
-                                        String cedula = response.optString("cedula", "");
-                                        String apellido = response.optString("apellidos", "");
-                                        String direccion = response.optString("direccion", "");
-                                        String telefono = response.optString("telf", "");
-                                        String contrasena = response.optString("contrasena", "");
-                                        String fecha_nac = response.optString("fecha_nac", "");
+                                            String nombre = response.optString("nombres", "");
+                                            String correo = response.optString("correo", "");
+                                            String imageUri = response.optString("foto", "");
+                                            String cedula = response.optString("cedula", "");
+                                            String apellido = response.optString("apellidos", "");
+                                            String direccion = response.optString("direccion", "");
+                                            String telefono = response.optString("telf", "");
+                                            String contrasena = response.optString("contrasena", "");
+                                            String fecha_nac = response.optString("fecha_nac", "");
 
-                                        Intent intent = new Intent(PerfilUsuarioActivity.this, modificarEstudiante.class);
-                                        intent.putExtra("user_name", nombre);
-                                        intent.putExtra("user_email", correo);
-                                        intent.putExtra("cedula",cedula);
-                                        intent.putExtra("image_uri", imageUri.toString());
-                                        intent.putExtra("apellidos", apellido);
-                                        intent.putExtra("direccion", direccion);
-                                        intent.putExtra("telefono", telefono);
-                                        intent.putExtra("contrasena", contrasena);
-                                        intent.putExtra("fecha_nac", fecha_nac);
-
-                                        startActivity(intent);
-                                    } else {
-                                        Toast.makeText(PerfilUsuarioActivity.this, "Autenticación fallida", Toast.LENGTH_LONG).show();
+                                            Intent intent = new Intent(PerfilUsuarioActivity.this, modificarEstudiante.class);
+                                            intent.putExtra("user_name", nombre);
+                                            intent.putExtra("user_email", correo);
+                                            intent.putExtra("cedula",cedula);
+                                            intent.putExtra("image_uri", imageUri.toString());
+                                            intent.putExtra("apellidos", apellido);
+                                            intent.putExtra("direccion", direccion);
+                                            intent.putExtra("telefono", telefono);
+                                            intent.putExtra("contrasena", contrasena);
+                                            intent.putExtra("fecha_nac", fecha_nac);
+                                            startActivity(intent);
+                                        } else {
+                                            Toast.makeText(PerfilUsuarioActivity.this, "Autenticación fallida", Toast.LENGTH_LONG).show();
+                                        }
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
                                     }
-                                } catch (Exception e) {
-                                    e.printStackTrace();
                                 }
-                            }
-                        }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Log.e("LoginActivity", "Error en la solicitud: " + error.getMessage());
-                        Toast.makeText(PerfilUsuarioActivity.this, "Error en la solicitud: " + error.getMessage(), Toast.LENGTH_LONG).show();
-                    }
-                });
+                            }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Log.e("LoginActivity", "Error en la solicitud: " + error.getMessage());
+                            Toast.makeText(PerfilUsuarioActivity.this, "Error en la solicitud: " + error.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    });
 
-                RequestQueue requestQueue = Volley.newRequestQueue(PerfilUsuarioActivity.this);
-                requestQueue.add(request);
+                    RequestQueue requestQueue = Volley.newRequestQueue(PerfilUsuarioActivity.this);
+                    requestQueue.add(request);
 
 
             }
@@ -201,8 +205,7 @@ public class PerfilUsuarioActivity  extends AppCompatActivity {
             Glide.with(this)
                     .load(imageUri)
                     .apply(new RequestOptions()
-                            .placeholder(R.drawable.logosinfondo)  // Imagen de marcador de posición mientras carga
-                            .error(R.drawable.tati)        // Imagen de marcador de posición en caso de error
+                             // Imagen de marcador de posición en caso de error
                     )
                     .listener(new RequestListener<Drawable>() {
                         @Override
@@ -224,5 +227,6 @@ public class PerfilUsuarioActivity  extends AppCompatActivity {
             ivUserImage.setImageResource(R.drawable.luffiperfil);
         }
     }
+
 }
 

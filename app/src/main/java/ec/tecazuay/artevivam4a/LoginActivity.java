@@ -99,7 +99,7 @@ public class LoginActivity extends AppCompatActivity {
                                     intent.putExtra("cedula",cedula);
                                     intent.putExtra("image_uri", imageUri.toString());
                                     Log.d("LoginActivity", "Respuesta del servidor: " + response.toString());
-
+finish();
                                     startActivity(intent);
                                 } else {
                                     Log.d("LoginActivity", "Autenticación fallida para el correo: " + mail);
