@@ -5,17 +5,14 @@
     android:layout_height="match_parent"
     android:background="@drawable/fondocolores">
 
-
- />
-
     <Button
         android:id="@+id/btnSchedule1"
         android:layout_width="265dp"
-        android:layout_height="56dp"
+        android:layout_height="69dp"
         android:layout_below="@id/btnCourses"
         android:layout_alignParentStart="true"
         android:layout_marginStart="72dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="45dp"
         android:background="@drawable/rounded_button"
         android:drawableLeft="@drawable/horario64"
         android:text="Horarios"
@@ -23,33 +20,33 @@
         android:textSize="18sp"
         android:textStyle="bold" />
 
-   <Button
-       android:id="@+id/btnCourses"
-       android:layout_width="265dp"
-       android:layout_height="56dp"
-       android:layout_below="@id/tvMail"
-       android:layout_alignParentStart="true"
-       android:layout_marginStart="72dp"
-       android:layout_marginTop="40dp"
-       android:background="@drawable/rounded_button"
-       android:backgroundTint="@color/white"
-       android:drawableLeft="@drawable/cursos64"
-       android:text="Asignaturas"
-       android:textColor="@color/white"
-       android:textSize="18sp"
-       android:textStyle="bold" />
-
     <Button
         android:id="@+id/btnDocentes"
         android:layout_width="265dp"
-        android:layout_height="54dp"
+        android:layout_height="69dp"
         android:layout_below="@id/btnSchedule1"
         android:layout_alignParentStart="true"
         android:layout_marginStart="72dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="45dp"
         android:background="@drawable/rounded_button"
         android:drawableLeft="@drawable/profesora64"
         android:text="Docentes"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnCourses"
+        android:layout_width="265dp"
+        android:layout_height="69dp"
+        android:layout_below="@id/tvMail"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="45dp"
+        android:background="@drawable/rounded_button"
+        android:backgroundTint="@color/white"
+        android:drawableLeft="@drawable/cursos64"
+        android:text="Asignaturas"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold" />
