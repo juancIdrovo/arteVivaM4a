@@ -23,6 +23,7 @@
             android:text="Asignatura: "
             android:textStyle="bold"
             android:textSize="18sp"
+
             android:textColor="@color/maradito"/>
 
         <TextView

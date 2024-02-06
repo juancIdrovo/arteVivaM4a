@@ -3,14 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/rosaditoPalo">
+    android:background="@drawable/fondonegro">
 
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/color" />
+ />
 
     <Button
         android:id="@+id/btnSchedule1"
@@ -18,27 +14,29 @@
         android:layout_height="56dp"
         android:layout_below="@id/btnCourses"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="71dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/rounded_button"
         android:drawableLeft="@drawable/horario64"
         android:text="Horarios"
-        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:textSize="18sp"
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/btnNotes"
+        android:id="@+id/btnCourses"
         android:layout_width="265dp"
         android:layout_height="56dp"
         android:layout_below="@id/tvMail"
         android:layout_alignParentStart="true"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="71dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="80dp"
         android:background="@drawable/rounded_button"
-        android:drawableLeft="@drawable/calificacion64"
-        android:text="Notas"
-        android:textSize="16sp"
+        android:backgroundTint="@color/white"
+        android:drawableLeft="@drawable/cursos64"
+        android:text="Asignaturas"
+        android:textColor="@color/white"
+        android:textSize="18sp"
         android:textStyle="bold" />
 
     <Button
@@ -47,37 +45,24 @@
         android:layout_height="54dp"
         android:layout_below="@id/btnSchedule1"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="71dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/rounded_button"
         android:drawableLeft="@drawable/profesora64"
         android:text="Docentes"
-        android:textSize="16sp"
-        android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/btnCourses"
-        android:layout_width="265dp"
-        android:layout_height="56dp"
-        android:layout_below="@id/btnNotes"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="71dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/rounded_button"
-        android:drawableLeft="@drawable/cursos64"
-        android:text="Asignaturas"
-        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:textSize="18sp"
         android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/btnOptions"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="43dp"
+        android:layout_height="48dp"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="19dp"
         android:contentDescription="Botón de opciones"
-        android:src="@drawable/trespuntosopt34" />
+        android:src="@drawable/opcion64" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/fotoPerfil"
@@ -87,50 +72,51 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="87dp"
-        android:layout_marginTop="38dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="88dp"
         android:src="@drawable/luffiperfil"
-        app:civ_border_color="#000000"
+        app:civ_border_color="@color/maradito"
         app:civ_border_width="3dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtbuscar" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/tvName"
-        android:layout_width="251dp"
+        android:layout_width="309dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/imageViewfoto"
+
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="81dp"
-        android:layout_marginTop="339dp"
-        android:backgroundTint="#000000"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="292dp"
+        android:backgroundTint="@color/white"
         android:backgroundTintMode="add"
         android:breakStrategy="high_quality"
         android:capitalize="characters"
-        android:foregroundTint="#000000"
+        android:foregroundTint="@color/white"
+
         android:text="TextView"
         android:textAlignment="center"
         android:textAllCaps="false"
-        android:textColor="#000000"
+        android:textColor="@color/white"
         android:textColorHighlight="#C51E1E"
         android:textSize="30dp"
         android:textStyle="bold|italic" />
 
     <TextView
         android:id="@+id/tvMail"
-        android:layout_width="311dp"
-        android:layout_height="wrap_content"
+        android:layout_width="312dp"
+        android:layout_height="37dp"
         android:layout_below="@+id/tvName"
         android:layout_alignParentStart="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="35dp"
-        android:backgroundTint="#F0EBF3"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="@color/white"
         android:text="TextView"
         android:textAlignment="center"
+        android:textColor="@color/white"
         android:textSize="20dp"
         android:textStyle="italic" />
 
