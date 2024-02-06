@@ -1,5 +1,6 @@
 package ec.tecazuay.artevivam4a;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -36,6 +37,7 @@ public class MatriculasActivity extends AppCompatActivity {
         // Inicializar vistas
         recyclerViewMatriculas = findViewById(R.id.recyclerViewMatriculas);
         Button btnBackToMenu = findViewById(R.id.btnBackToMenu);
+        Button btnprofe = findViewById(R.id.btnDocentes);
 
         // Configurar el RecyclerView y su adaptador
         matriculasAdapter = new MatriculasAdapter(new ArrayList<>());
@@ -47,6 +49,15 @@ public class MatriculasActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 onBackPressed();
+            }
+        });
+
+        btnprofe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                startActivity(new Intent(MatriculasActivity.this, PerfilUsuarioActivity.class));
+
             }
         });
 
