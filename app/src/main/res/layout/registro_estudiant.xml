@@ -24,21 +24,23 @@
             app:layout_constraintVertical_bias="0.0"
             tools:srcCompat="@drawable/fondoblanco" />
 
+
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imageViewfoto"
-            android:layout_width="138dp"
-            android:layout_height="124dp"
-            android:layout_marginTop="92dp"
-            android:background="#5E5858"
-            android:scaleType="centerCrop"
+            android:layout_width="153dp"
+            android:layout_height="133dp"
+
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="87dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/luffiperfil"
+            app:civ_border_color="@color/maradito"
+            app:civ_border_width="3dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.868"
+            app:layout_constraintHorizontal_bias="0.922"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imageView2" />
-
-
-
-
+            tools:layout_editor_absoluteY="84dp" />
 
         <TextView
             android:id="@+id/textView2"
