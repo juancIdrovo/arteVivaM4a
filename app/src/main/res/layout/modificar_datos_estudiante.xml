@@ -4,21 +4,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/fondoblanco">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="451dp"
-            android:layout_height="758dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@color/rosaditoPalo" />
 
         <!-- Campo cedula -->
         <de.hdodenhof.circleimageview.CircleImageView
@@ -137,7 +129,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txtcorreo"
-                android:layout_width="match_parent"
+                android:layout_width="400dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_text_field"
                 android:hint="Correo"
@@ -154,7 +146,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txtdireccion"
-                android:layout_width="match_parent"
+                android:layout_width="400dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_text_field"
                 android:hint="Dirección"
@@ -171,7 +163,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txttelf"
-                android:layout_width="match_parent"
+                android:layout_width="400dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/rounded_text_field"
                 android:hint="Teléfono"
@@ -185,37 +177,27 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayoutFechaNac"
-            android:layout_width="447dp"
+            android:layout_width="400dp"
             android:layout_height="60dp"
-            android:layout_marginTop="564dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutTelf">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txtFechaNac"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:background="@drawable/rounded_text_field"
-                android:focusable="false"
-                android:hint="Fecha de Nacimiento"
-                android:onClick="showDatePickerDialog"
-                android:textColor="@color/black"
-                android:textSize="17sp"
-                android:textStyle="bold" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="wrap_content"
+            android:layout_width="400dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayoutTelf">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txtcontrasena"
-                android:layout_width="445dp"
+                android:layout_width="match_parent"
                 android:layout_height="58dp"
                 android:background="@drawable/rounded_text_field"
                 android:hint="Contraseña"
@@ -225,41 +207,28 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/btnGuardar"
-            android:layout_width="159dp"
-            android:layout_height="53dp"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="593dp"
-            android:layout_marginEnd="204dp"
-            android:layout_marginBottom="56dp"
-            android:text="Guardar"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
-
-        <Button
             android:id="@+id/btnCancelar"
             android:layout_width="159dp"
             android:layout_height="53dp"
-            android:layout_marginStart="231dp"
-            android:layout_marginTop="593dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="56dp"
+            android:layout_marginTop="96dp"
             android:text="Cancelar"
             android:textSize="17sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/btnGuardar"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutFechaNac" />
+
+        <Button
+            android:id="@+id/btnGuardar"
+            android:layout_width="159dp"
+            android:layout_height="53dp"
+            android:layout_marginTop="96dp"
+            android:text="Guardar"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/btnCancelar"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutFechaNac" />
 
         <Button
             android:id="@+id/btnfotito"
@@ -272,6 +241,22 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtFechaNac"
+            android:layout_width="400dp"
+            android:layout_height="65dp"
+            android:background="@drawable/rounded_text_field"
+            android:focusable="false"
+            android:hint="Fecha de Nacimiento"
+            android:onClick="showDatePickerDialog"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutFechaNac" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/rosaditoPalo">
+    android:background="@drawable/fondoblanco">
 
     <ImageView
         android:id="@+id/imageViewLogo"
@@ -97,9 +97,11 @@
         android:layout_marginStart="46dp"
         android:layout_marginTop="172dp"
         android:layout_marginEnd="47dp"
+        android:layout_marginBottom="25dp"
+        android:onClick="Login"
         android:text="Iniciar Sesión"
         android:textSize="18sp"
-        android:onClick="Login"
+        app:layout_constraintBottom_toTopOf="@+id/btnRegistro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -121,7 +123,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnLogIn"
         app:layout_constraintVertical_bias="0.526" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
