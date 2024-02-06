@@ -54,7 +54,7 @@ public class PerfilUsuarioActivity  extends AppCompatActivity {
         imageUri = Uri.parse(getIntent().getStringExtra("image_uri"));
 
 
-        btnNotas = findViewById(R.id.btnNotes);
+
         btnHorario = findViewById(R.id.btnSchedule1);
         btnDocente = findViewById(R.id.btnDocentes);
         btnCurso = findViewById(R.id.btnCourses);
