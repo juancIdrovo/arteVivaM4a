@@ -49,24 +49,19 @@ public class ListaProfesoresActivity extends AppCompatActivity {
         String baseUrl = "http://192.168.18.26:8080/";
         String endpoint = "api/profesores";
 
-        // Crea una instancia de Retrofit
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        // Crea una interfaz para las solicitudes HTTP
         ApiService apiService = retrofit.create(ApiService.class);
 
-        // Realiza la solicitud GET para obtener la lista de profesores
         Call<List<Profesor>> call = apiService.getProfesores();
 
-        // Maneja la respuesta de la solicitud
         call.enqueue(new Callback<List<Profesor>>() {
             @Override
             public void onResponse(Call<List<Profesor>> call, Response<List<Profesor>> response) {
                 if (response.isSuccessful()) {
-                    // Si la solicitud fue exitosa, actualiza el adaptador con la lista de profesores
                     List<Profesor> listaProfesores = response.body();
                     profesorAdapter.setListaProfesores(listaProfesores);
                     profesorAdapter.notifyDataSetChanged();
