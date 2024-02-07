@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- item_matricula.xml -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -7,27 +6,6 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <TextView
-        android:id="@+id/tvId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Id Horario: "
-        android:textStyle="bold"
-        android:textSize="16sp"/>
-    <TextView
-        android:id="@+id/tvCedulaP"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Cedula Profesor: "
-        android:textStyle="bold"
-        android:textSize="16sp"/>
-    <TextView
-        android:id="@+id/tvNombreP"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nombre del Profesor: "
-        android:textStyle="bold"
-        android:textSize="16sp"/>
     <TextView
         android:id="@+id/tvAsignaturaH"
         android:layout_width="wrap_content"
@@ -59,6 +37,4 @@
         android:text="Hora Fin: "
         android:textStyle="bold"
         android:textSize="16sp"/>
-
-
 </LinearLayout>

@@ -48,7 +48,7 @@ public class ListaProfesoresActivity extends AppCompatActivity {
 
     private void obtenerListaProfesores() {
         // URL del servidor Spring Boot
-        String baseUrl = "http://192.168.18.26:8080/";
+        String baseUrl = "http://192.168.18.17:8080/";
         String endpoint = "api/profesores";
 
         Retrofit retrofit = new Retrofit.Builder()

@@ -7,7 +7,6 @@ public class Horarioss {
     private String dia;
     private Profesor profesor;
     private Asignatura asignatura;
-
     public Profesor getProfesor() {
         return profesor;
     }
@@ -55,4 +54,25 @@ public class Horarioss {
     public void setDia(String dia) {
         this.dia = dia;
     }
+
+    private String nombreAsignatura; // Nuevo campo para almacenar el nombre de la asignatura
+
+    // Getters y setters para el nuevo campo
+    public String getNombreAsignatura() {
+        return nombreAsignatura;
+    }
+
+    public void setNombreAsignatura(String nombreAsignatura) {
+        this.nombreAsignatura = nombreAsignatura;
+    }
+
+    public Long getCodigoAsignatura() {
+        // Asumiendo que puedes acceder al objeto asignatura y obtener su código
+        if (asignatura != null) {
+            return asignatura.getCodigoAsignatura();
+        } else {
+            return null; // O lanza una excepción o devuelve un valor predeterminado según tu lógica
+        }
+    }
+
 }

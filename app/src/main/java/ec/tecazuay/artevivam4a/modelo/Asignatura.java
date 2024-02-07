@@ -19,7 +19,7 @@ public class Asignatura {
         this.ced_profesor_fk = ced_profesor_fk;
     }
 
-    public Long getIdAsignatura() {
+    public Long getCodigoAsignatura() {
         return idAsignatura;
     }
 

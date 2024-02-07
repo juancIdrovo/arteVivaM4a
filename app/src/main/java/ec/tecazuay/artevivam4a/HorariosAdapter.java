@@ -31,25 +31,18 @@ public class HorariosAdapter extends RecyclerView.Adapter<HorariosAdapter.Horari
     @Override
     public void onBindViewHolder(@NonNull HorariosViewHolder holder, int position) {
         Horarioss horario = horarios.get(position);
-        Asignatura asignatura = horario.getAsignatura();
-        Profesor profesor = horario.getProfesor();
-        if (asignatura != null) {
-            holder.tvAsignaturaH.setText("Asignatura: " + asignatura.getNombre());
-        }
 
-        if (profesor != null) {
-            holder.tvNombreP.setText("Docente: " + profesor.getNombres() + " " + profesor.getApellidos());
-            holder.tvCedulaP.setText("Cédula: " + profesor.getCedula_profesor_fk());
-        }
+        // Mostrar el nombre de la asignatura en lugar del código
+        holder.tvAsignaturaH.setText("Asignatura: " + horario.getNombreAsignatura());
 
-        // Configurar la vista del elemento de la matrícula aquí
-        holder.tvId.setText("Id de Horario: " + horario.getCodigoHorarios());
-        holder.tvDia.setText("Dia: " + horario.getDia());
+        // Mostrar el día del horario
+        holder.tvDia.setText("Día: " + horario.getDia());
+
+        // Mostrar el horario de inicio y fin
         holder.tvHoraIni.setText("Hora de inicio: " + horario.getHora_Inicio());
         holder.tvHoraFin.setText("Hora Fin: " + horario.getHora_fin());
-
-
     }
+
 
     @Override
     public int getItemCount() {
@@ -71,10 +64,8 @@ public class HorariosAdapter extends RecyclerView.Adapter<HorariosAdapter.Horari
         public HorariosViewHolder(@NonNull View itemView) {
             super(itemView);
             // Inicializar vistas aquí
-            tvId = itemView.findViewById(R.id.tvId);
+
             tvAsignaturaH = itemView.findViewById(R.id.tvAsignaturaH);
-            tvCedulaP = itemView.findViewById(R.id.tvCedulaP);
-            tvNombreP = itemView.findViewById(R.id.tvNombreP);
             tvDia= itemView.findViewById(R.id.tvDia);
             tvHoraIni = itemView.findViewById(R.id.tvHoraIni);
             tvHoraFin = itemView.findViewById(R.id.tvHoraFin);

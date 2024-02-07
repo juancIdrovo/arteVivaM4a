@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/rosaditoPalo">
+    android:background="@drawable/fondoblanco">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="234dp"
         android:layout_height="44dp"
         android:layout_marginStart="82dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="96dp"
         android:text="Horario de Clases"
         android:textColor="@color/maradito"
@@ -22,107 +22,38 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btnLunes"
-        android:layout_width="122dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="15dp"
-        android:text="Lunes"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/recyclerViewHorarios"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <Button
-        android:id="@+id/btnMartes"
-        android:layout_width="122dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="15dp"
-        android:text="Martes"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/recyclerViewHorarios"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLunes" />
-
-    <Button
-        android:id="@+id/btnMiercoles"
-        android:layout_width="122dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="15dp"
-        android:text="Miercoles"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/recyclerViewHorarios"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnMartes" />
-
-    <Button
-        android:id="@+id/btnJueves"
-        android:layout_width="122dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="14dp"
-        android:text="Jueves"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/recyclerViewHorarios"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnMiercoles" />
-
-    <Button
-        android:id="@+id/btmViernes"
-        android:layout_width="122dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="16dp"
-        android:text="Viernes"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/recyclerViewHorarios"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnJueves" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewHorarios"
-        android:layout_width="233dp"
-        android:layout_height="491dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:textColor="@color/black"
+        android:layout_width="358dp"
+        android:layout_height="538dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="34dp"
+        android:layout_marginEnd="31dp"
+        android:layout_marginBottom="24dp"
         android:background="@drawable/border_background"
+        android:textColor="@color/black"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btnAceptar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/btnLunes"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.392"
+        app:layout_constraintHorizontal_bias="0.166"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintWidth_percent="0.75" />
 
     <Button
         android:id="@+id/btnAceptar"
-        android:layout_width="244dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="83dp"
-        android:layout_marginEnd="84dp"
-        android:layout_marginBottom="52dp"
-        android:text="Aceptar"
-        android:textSize="16sp"
+        android:layout_width="330dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="20dp"
+        android:drawableLeft="@drawable/perfil64"
+        android:text="Perfil de Usuario"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerViewHorarios" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
