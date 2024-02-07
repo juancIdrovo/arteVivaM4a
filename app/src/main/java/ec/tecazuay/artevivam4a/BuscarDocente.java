@@ -1,8 +1,10 @@
 package ec.tecazuay.artevivam4a;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -41,6 +43,8 @@ public class BuscarDocente extends AppCompatActivity {
         queue = Volley.newRequestQueue(this);
 
         ImageView imageBuscar = findViewById(R.id.imageBuscar);
+        Button btnBackToMenu = findViewById(R.id.btnBackToMenu);
+        Button btnprofe = findViewById(R.id.btnDocentes);
         imageBuscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,6 +61,23 @@ public class BuscarDocente extends AppCompatActivity {
                 }
             }
         });
+
+      btnBackToMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
+        btnprofe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                startActivity(new Intent(BuscarDocente.this, ListaProfesoresActivity.class));
+
+            }
+        });
+
 
         // Inicializar RecyclerView
         recyclerView = findViewById(R.id.recyclerViewMatriculas);
