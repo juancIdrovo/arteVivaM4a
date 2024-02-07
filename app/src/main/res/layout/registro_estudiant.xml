@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondoblanco"
 >
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -12,17 +13,7 @@
 
         <!-- Campo cedula -->
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="417dp"
-            android:layout_height="731dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            tools:srcCompat="@drawable/fondoblanco" />
+
 
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -33,6 +24,7 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginStart="87dp"
+            android:layout_marginTop="21dp"
             android:layout_marginEnd="16dp"
             android:src="@drawable/luffiperfil"
             app:civ_border_color="@color/maradito"
@@ -40,22 +32,21 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.922"
             app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="84dp" />
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
             android:text="Ingresa tus datos"
             android:textColor="@color/maradito"
             android:textSize="28sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.552"
+            app:layout_constraintHorizontal_bias="0.548"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.036" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayoutCedula"
@@ -210,43 +201,42 @@
 
         <Button
             android:id="@+id/btnGuardar"
-            android:layout_width="159dp"
-            android:layout_height="53dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_width="163dp"
+            android:layout_height="66dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="52dp"
             android:onClick="clickbtnGuardar"
             android:text="Guardar"
             android:textSize="17sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutFechaNac" />
 
         <Button
             android:id="@+id/btnCancelar"
-            android:layout_width="159dp"
-            android:layout_height="53dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="163dp"
+            android:layout_height="66dp"
+            android:layout_marginStart="43dp"
+            android:layout_marginTop="52dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
             android:text="Cancelar"
             android:textSize="17sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/btnGuardar"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayoutFechaNac" />
 
         <Button
             android:id="@+id/btnSeleccionarFoto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="232dp"
+            android:layout_marginTop="16dp"
             android:text="Seleccionar foto"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.888"
+            app:layout_constraintHorizontal_bias="0.887"
             app:layout_constraintStart_toStartOf="@+id/textInputLayoutApellidos"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/imageViewfoto" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayoutEstudiante"

@@ -10,6 +10,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -29,8 +31,10 @@ import java.util.List;
 import ec.tecazuay.artevivam4a.modelo.Profesor;
 
 public class Docente extends AppCompatActivity {
-    List<String> datos = new ArrayList<>();
+    List<Profesor> datos = new ArrayList<>(); // Cambio aquí
     RequestQueue queue;
+    RecyclerView recyclerView;
+    DocenteAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +61,11 @@ public class Docente extends AppCompatActivity {
             }
         });
 
+        // Inicializar RecyclerView
+        recyclerView = findViewById(R.id.recyclerViewMatriculas);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new DocenteAdapter(datos);
+        recyclerView.setAdapter(adapter);
     }
 
     private void MostrarDetallesProfesor(String codigoProfesor) {
@@ -65,23 +74,14 @@ public class Docente extends AppCompatActivity {
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, urlWithCode, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                datos.clear();
-
                 try {
                     Profesor profesor = new Gson().fromJson(response.toString(), Profesor.class);
 
-                    // Update the UI with professor details using TextViews
-                    TextView tvNombre = findViewById(R.id.tvNombre);
-                    TextView tvApellido = findViewById(R.id.tvApellido);
-                    TextView tvCorreo = findViewById(R.id.tvCorreo);
-                    TextView tvTelefono = findViewById(R.id.tvTelefono);
+                    // Añadir el objeto Profesor a la lista datos
+                    datos.add(profesor);
 
-                    tvNombre.setText(profesor.getNombres());
-                    tvApellido.setText(profesor.getApellidos());
-                    tvCorreo.setText(profesor.getCorreo());
-                    tvTelefono.setText(profesor.getTelf());
-
-                    // Puedes agregar más detalles según sea necesario
+                    // Notificar al adaptador que los datos han cambiado
+                    adapter.notifyDataSetChanged();
 
                 } catch (JsonSyntaxException e) {
                     e.printStackTrace();
@@ -99,3 +99,5 @@ public class Docente extends AppCompatActivity {
         queue.add(request);
     }
 }
+
+

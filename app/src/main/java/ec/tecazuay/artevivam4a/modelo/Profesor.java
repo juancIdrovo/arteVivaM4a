@@ -3,7 +3,7 @@ package ec.tecazuay.artevivam4a.modelo;
 public class Profesor extends  Persona{
 
     private String cedula_profesor_fk;
-    private String Titulo;
+    private String titulo;
 
     public String getCedula_profesor_fk() {
         return cedula_profesor_fk;
@@ -14,10 +14,10 @@ public class Profesor extends  Persona{
     }
 
     public String getTitulo() {
-        return Titulo;
+        return titulo;
     }
 
     public void setTitulo(String titulo) {
-        Titulo = titulo;
+        titulo = titulo;
     }
 }
