@@ -41,6 +41,7 @@ public class MatriculasAdapter extends RecyclerView.Adapter<MatriculasAdapter.Ma
 
         if (profesor != null) {
             holder.tvnomApe.setText("Docente: " + profesor.getNombres() + " " + profesor.getApellidos());
+            holder.tvced.setText("Cédula: " + profesor.getCedula_profesor_fk());
         }
 
         holder.tvEstado.setText("Estado: " + matricula.getEstado());
@@ -67,6 +68,7 @@ public class MatriculasAdapter extends RecyclerView.Adapter<MatriculasAdapter.Ma
         public TextView tvFechaFin;
         public TextView tvDescripcion;
         public TextView tvnomApe;
+        public TextView tvced;
 
         public MatriculaViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -78,6 +80,7 @@ public class MatriculasAdapter extends RecyclerView.Adapter<MatriculasAdapter.Ma
             tvFechaFin = itemView.findViewById(R.id.tvFechaFin);
             tvDescripcion = itemView.findViewById(R.id.tvDescripcion);
             tvnomApe = itemView.findViewById(R.id.tvnomApe);
+            tvced = itemView.findViewById(R.id.tvcedprofe);
         }
     }
 }

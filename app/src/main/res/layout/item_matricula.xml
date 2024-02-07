@@ -73,8 +73,9 @@
             android:text="Cédula Docente: "
             android:textStyle="bold"
             android:textSize="18sp"
-            android:textColor="@color/maradito"
-            />
+            android:textIsSelectable="true"
+            android:textColor="@color/maradito" />
+
 
         <TextView
             android:id="@+id/tvFechaInicio"

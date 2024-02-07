@@ -29,8 +29,8 @@
     <Button
         android:id="@+id/btnBackToMenu"
         android:layout_width="350dp"
-        android:layout_height="56dp"
-        android:text="Perfil"
+        android:layout_height="69dp"
+        android:text="Perfil de Usuario"
         android:textSize="18sp"
         android:layout_marginTop="8dp"
         android:textStyle="bold"
@@ -41,7 +41,7 @@
     <Button
         android:id="@+id/btnDocentes"
         android:layout_width="350dp"
-        android:layout_height="56dp"
+        android:layout_height="69dp"
         android:text="Docentes"
         android:textSize="18sp"
         android:layout_marginTop="8dp"

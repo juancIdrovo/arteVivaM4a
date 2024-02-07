@@ -42,7 +42,7 @@ public class PerfilUsuarioActivity  extends AppCompatActivity {
     private String cedula;
     Button btnNotas, btnHorario, btnDocente, btnmodificar, btnCurso;
     ImageView opt;
-    String url = "http://192.168.43.81:8080/api/estudiantes/";
+    String url = "http://192.168.18.17:8080/api/estudiantes/";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,10 +117,13 @@ public class PerfilUsuarioActivity  extends AppCompatActivity {
 
         signOutButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                popupWindow.dismiss();
+            public void onClick(View view) {
+
+                startActivity(new Intent(PerfilUsuarioActivity.this, LoginActivity.class).putExtra("cedula",cedula));
+
             }
         });
+
         modifyProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
