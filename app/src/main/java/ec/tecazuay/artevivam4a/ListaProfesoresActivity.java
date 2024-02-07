@@ -1,6 +1,8 @@
 package ec.tecazuay.artevivam4a;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -78,4 +80,10 @@ public class ListaProfesoresActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void irABuscarDocente(View view) {
+        Intent intent = new Intent(this, BuscarDocente.class);
+        startActivity(intent);
+    }
+
 }
