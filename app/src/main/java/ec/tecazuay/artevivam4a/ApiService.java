@@ -21,4 +21,7 @@ public interface ApiService {
     @GET("api/profesores/{cedulaProfesor}")
     Call<Profesor> getProfesor(@Path("cedulaProfesor") String cedulaProfesor);
 
+    @GET("api/profesores")
+    Call<List<Profesor>> getProfesores();
+
 }
