@@ -131,12 +131,8 @@ public class modificarEstudiante extends AppCompatActivity {
                             @Override
                             public void onResponse(JSONObject response) {
                                 Toast.makeText(modificarEstudiante.this, "Estudiante modificado correctamente", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(modificarEstudiante.this, PerfilUsuarioActivity.class);
-                                intent.putExtra("user_name", nuevosNombres);
-                                intent.putExtra("user_email", nuevoCorreo);
-                                intent.putExtra("image_uri", imageUri.toString());
-                                Log.d("LoginActivity", "Respuesta del servidor: " + response.toString());
-                                startActivity(intent);
+                                Toast.makeText(modificarEstudiante.this, "Vuelva a iniciar sesion para que se Actualizen sus datos", Toast.LENGTH_SHORT).show();
+onBackPressed();
                             }
                         },
                         new Response.ErrorListener() {
