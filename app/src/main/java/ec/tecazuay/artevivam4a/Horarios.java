@@ -30,6 +30,7 @@ import java.util.List;
 
 import ec.tecazuay.artevivam4a.modelo.Horarioss;
 import ec.tecazuay.artevivam4a.modelo.Matricula;
+import ec.tecazuay.artevivam4a.modelo.Profesor;
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
@@ -84,7 +85,7 @@ public class Horarios extends AppCompatActivity {
             try {
                 // Configurar Retrofit para tu API
                 Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl("http://192.168.18.17:8080/") // Coloca la URL base de tu API
+                        .baseUrl("http://192.168.18.254:8080/") // Coloca la URL base de tu API
                         .addConverterFactory(GsonConverterFactory.create())
                         .build();
 
@@ -99,7 +100,11 @@ public class Horarios extends AppCompatActivity {
 
                 Response<List<Horarioss>> response = call.execute();
                 if (response.isSuccessful()) {
-                    return response.body();
+                    List<Horarioss> horarios= response.body();
+                    for (Horarioss horario:horarios){
+                        obtenerInformacionProfesor(horario);
+                    }
+                    return horarios;
                 } else {
                     // Manejar el error de la API
                     String errorBody = response.errorBody().string();
@@ -113,6 +118,32 @@ public class Horarios extends AppCompatActivity {
             return null;
         }
 
+        private void obtenerInformacionProfesor(Horarioss horario) {
+            try {
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl("192.168.18.254:8080/") // Coloca la URL base de tu API
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build();
+
+                ApiService service = retrofit.create(ApiService.class);
+
+                // Obtener información del profesor utilizando la cédula del profesor en la matrícula
+                Call<Profesor> call = service.getProfesor(horario.getAsignatura().getCed_profesor_fk());
+                Response<Profesor> response = call.execute();
+
+                if (response.isSuccessful()) {
+                    Profesor profesor = response.body();
+                    horario.setProfesor(profesor);
+                } else {
+                    // Manejar el error de la API para la solicitud del profesor
+                    String errorBody = response.errorBody().string();
+                    Log.e(TAG, "Error al obtener información del profesor: " + errorBody);
+                }
+            } catch (IOException e) {
+                // Manejar excepciones, por ejemplo, falta de conexión a Internet
+                Log.e(TAG, "Excepción al obtener información del profesor", e);
+            }
+        }
         @Override
         protected void onPostExecute(List<Horarioss> horarios) {
             if (horarios != null) {

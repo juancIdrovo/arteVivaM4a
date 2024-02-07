@@ -5,6 +5,24 @@ public class Horarioss {
     private String hora_Inicio;
     private String hora_fin;
     private String dia;
+    private Profesor profesor;
+    private Asignatura asignatura;
+
+    public Profesor getProfesor() {
+        return profesor;
+    }
+
+    public void setProfesor(Profesor profesor) {
+        this.profesor = profesor;
+    }
+
+    public Asignatura getAsignatura() {
+        return asignatura;
+    }
+
+    public void setAsignatura(Asignatura asignatura) {
+        this.asignatura = asignatura;
+    }
 
     public Long getCodigoHorarios() {
         return codigoHorarios;
