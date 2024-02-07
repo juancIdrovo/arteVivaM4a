@@ -53,6 +53,12 @@
             android:name=".RegistroEstudiante"
             android:exported="true" />
         <activity
+            android:name=".ProfesorAdapter"
+            android:exported="true" />
+        <activity
+            android:name=".ListaProfesoresActivity"
+            android:exported="true" />
+        <activity
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
