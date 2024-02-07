@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/fondoblanco"
-    tools:context=".Docente">
+    tools:context=".BuscarDocente">
 
     <!-- Campo de búsqueda y botón -->
     <LinearLayout

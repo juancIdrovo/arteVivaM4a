@@ -23,7 +23,7 @@
             android:name=".MenuDesplegaable"
             android:exported="false" />
         <activity
-            android:name=".Docente"
+            android:name=".BuscarDocente"
             android:exported="true" />
         <activity
             android:name=".MatriculasActivity"

@@ -56,7 +56,7 @@ public class MatriculasActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                startActivity(new Intent(MatriculasActivity.this, Docente.class));
+                startActivity(new Intent(MatriculasActivity.this, BuscarDocente.class));
 
             }
         });

@@ -3,10 +3,7 @@ package ec.tecazuay.artevivam4a;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,7 +27,7 @@ import java.util.List;
 
 import ec.tecazuay.artevivam4a.modelo.Profesor;
 
-public class Docente extends AppCompatActivity {
+public class BuscarDocente extends AppCompatActivity {
     List<Profesor> datos = new ArrayList<>(); // Cambio aquí
     RequestQueue queue;
     RecyclerView recyclerView;
